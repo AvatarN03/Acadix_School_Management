@@ -11,22 +11,22 @@ import { events } from "@/lib/data";
 const EventCalendar = () => {
   const [value, onChange] = useState<Value>(new Date());
   return (
-    <div className="bg-primaryDark text-white w-full p-4 rounded-xl shadow-md">
-      <Calendar className={"text-mutedBlue shadow-black shadow-md w-full rounded-lg"} onChange={onChange} value={value} />
+    <div className="bg-periwinkle text-dodgerBlue  w-full p-4 rounded-xl shadow-md">
+      <Calendar className={"text-dodgerBlue w-full rounded-lg"} onChange={onChange} value={value} />
       <div className="flex items-center justify-between my-2">
         <h1 className="text-base md:text-xl font-semibold my-4">Events</h1>
-        <Ellipsis />
+        <Ellipsis className="cursor-pointer"/>
       </div>
       <div className="flex flex-col gap-4">
         {
           events.map((event)=>(
-            <div key={event.id} className="p-2 md:p-5 border-2 border-t-4 
-            border-primaryDark odd:border-t-accentGold even:border-t-accentBrown text-mutedBlue rounded-xl">
-              <div className="flex items-center justify-between">
+            <div key={event.id} className="p-2 md:p-5 border-t-4 
+             odd:bg-deepSky even:bg-babyBlue border-t-dodgerBlue  text-lavendar rounded-xl">
+              <div className="flex items-center justify-between gap-2">
                 <h1 className="font-semibold text-gray-300">{event.title}</h1>
-                <span className="text-gray-50 text-xs">{event.time}</span>
+                <span className="text-white/70 text-xs">{event.time}</span>
               </div>
-              <p className="text-sx mt-2">{event.description}</p>
+              <p className="text-xs lg:text-sm mt-2">{event.description}</p>
             </div>
           ))
         }

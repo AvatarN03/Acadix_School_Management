@@ -1,9 +1,168 @@
-// TEMPORARY DATA
 
-import { Calendar, Droplet, Mail, Phone } from "lucide-react";
-import { TeacherProfileProp } from "../../types";
+import {
+  Droplet,
+  Mail,
+  Phone,
+  BookOpen,
+  Calendar,
+  CheckSquare,
+  FileEdit,
+  FileTextIcon,
+  GraduationCap,
+  Home,
+  LogOut,
+  Megaphone,
+  MessageSquare,
+  Notebook,
+  Presentation,
+  Settings,
+  TrendingUp,
+  User,
+  UserPlus,
+  Users,
+} from "lucide-react";
+
+import { AnnouncementDataProps, MenuItemProps, TeacherProfileProp } from "../../types";
 
 export let role = "admin";
+
+export const menuItems: MenuItemProps[] = [
+  {
+    title: "MENU",
+    items: [
+      {
+        icon: Home,
+        label: "Home",
+        href: "/admin",
+        visible: ["admin", "teacher", "student", "parent"],
+      },
+      {
+        icon: Users,
+        label: "Teachers",
+        href: "/list/teachers",
+        visible: ["admin", "teacher"],
+      },
+      {
+        icon: GraduationCap,
+        label: "Students",
+        href: "/list/students",
+        visible: ["admin", "teacher"],
+      },
+      {
+        icon: UserPlus,
+        label: "Parents",
+        href: "/list/parents",
+        visible: ["admin", "teacher"],
+      },
+      {
+        icon: BookOpen,
+        label: "Subjects",
+        href: "/list/subjects",
+        visible: ["admin"],
+      },
+      {
+        icon: Presentation,
+        label: "Classes",
+        href: "/list/classes",
+        visible: ["admin", "teacher"],
+      },
+      {
+        icon: Notebook,
+        label: "Lessons",
+        href: "/list/lessons",
+        visible: ["admin", "teacher"],
+      },
+      {
+        icon: FileEdit,
+        label: "Exams",
+        href: "/list/exams",
+        visible: ["admin", "teacher", "student", "parent"],
+      },
+      {
+        icon: FileTextIcon,
+        label: "Assignments",
+        href: "/list/assignments",
+        visible: ["admin", "teacher", "student", "parent"],
+      },
+      {
+        icon: TrendingUp,
+        label: "Results",
+        href: "/list/results",
+        visible: ["admin", "teacher", "student", "parent"],
+      },
+      {
+        icon: CheckSquare,
+        label: "Attendance",
+        href: "/list/attendance",
+        visible: ["admin", "teacher", "student", "parent"],
+      },
+      {
+        icon: Calendar,
+        label: "Events",
+        href: "/list/events",
+        visible: ["admin", "teacher", "student", "parent"],
+      },
+      {
+        icon: MessageSquare,
+        label: "Messages",
+        href: "/list/messages",
+        visible: ["admin", "teacher", "student", "parent"],
+      },
+      {
+        icon: Megaphone,
+        label: "Announcements",
+        href: "/list/announcements",
+        visible: ["admin", "teacher", "student", "parent"],
+      },
+    ],
+  },
+  {
+    title: "OTHER",
+    items: [
+      {
+        icon: User,
+        label: "Profile",
+        href: "/profile",
+        visible: ["admin", "teacher", "student", "parent"],
+      },
+      {
+        icon: Settings,
+        label: "Settings",
+        href: "/settings",
+        visible: ["admin", "teacher", "student", "parent"],
+      },
+      {
+        icon: LogOut,
+        label: "Logout",
+        href: "/logout",
+        visible: ["admin", "teacher", "student", "parent"],
+      },
+    ],
+  },
+];
+
+export const announcements:AnnouncementDataProps[] = [
+  {
+    title: "Annual Sports Day Celebration Event",
+    date: "15-01-2025",
+    para:
+      "The school will be hosting its Annual Sports Day to encourage physical fitness and teamwork among students. All students are requested to participate actively and be present on time."
+  },
+  {
+    title: "Parent Teacher Meeting Important Notice",
+    date: "20-01-2025",
+    para:
+      "A Parent Teacher Meeting has been scheduled to discuss academic progress and overall development of students. Parents are requested to attend and cooperate with the teaching staff."
+  },
+  {
+    title: "Second Term Examination Schedule Announcement",
+    date: "05-02-2025",
+    para:
+      "The examination schedule for the second term has been released. Students are advised to check the timetable carefully and prepare accordingly for their upcoming exams."
+  }
+];
+
+
 
 export const teachersData = [
   {
@@ -918,8 +1077,6 @@ export const announcementsData = [
   },
 ];
 
-
-
 export const calendarEvents = [
   // 5 Dec 2025
   {
@@ -1030,8 +1187,7 @@ export const calendarEvents = [
   },
 ];
 
-
-export const TeacherProfile : TeacherProfileProp = {
+export const TeacherProfile: TeacherProfileProp = {
   blood: {
     label: "Blood Group",
     value: "A+",
@@ -1052,24 +1208,23 @@ export const TeacherProfile : TeacherProfileProp = {
     value: "+91 98765 43210",
     icon: Phone,
   },
-
-}
+};
 
 export const AdminStudentdata = [
   {
     name: "Total",
     value: 106,
-    fill: "#384054",
+    fill: "#508FE2",
   },
   {
     name: "Boys",
     value: 48,
-    fill: "#6B848F", // muted blue
+    fill: "#62BFED", 
   },
   {
     name: "Girls",
     value: 65,
-    fill: "#D39939", // accent gold
+    fill: "#0B63C1", // accent gold
   },
 ];
 
@@ -1146,7 +1301,6 @@ export const events = [
   },
 ];
 
-
 export const TeacherColumns = [
   {
     header: "Info",
@@ -1186,4 +1340,259 @@ export const TeacherColumns = [
 export const ListTeacherPerformaceData = [
   { name: "Group A", value: 92, fill: "#439ab9" },
   { name: "Group B", value: 8, fill: "#288deb" },
+];
+
+export const ListAnnouncementData = [
+  {
+    header: "Title",
+    accessor: "title",
+  },
+  {
+    header: "Class",
+    accessor: "class",
+  },
+  {
+    header: "Date",
+    accessor: "date",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Actions",
+    accessor: "actions",
+  },
+];
+
+export const ListAssignmentData = [
+  {
+    header: "Subject",
+    accessor: "subject",
+  },
+  {
+    header: "Class",
+    accessor: "class",
+  },
+  {
+    header: "Teacher",
+    accessor: "teacher",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Deadline",
+    accessor: "deadline",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Actions",
+    accessor: "actions",
+  },
+];
+
+export const ListClassData = [
+  {
+    header: "Class",
+    accessor: "class",
+  },
+  {
+    header: "Capacity",
+    accessor: "capacity",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Supervisor",
+    accessor: "supervisor",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Grade",
+    accessor: "grade",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Actions",
+    accessor: "actions",
+  },
+];
+
+export const ListEventData = [
+  {
+    header: "Title",
+    accessor: "title",
+  },
+  {
+    header: "Class",
+    accessor: "class",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "startTime",
+    accessor: "starttime",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "EndTime",
+    accessor: "endtime",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Date",
+    accessor: "date",
+  },
+  {
+    header: "Actions",
+    accessor: "actions",
+  },
+];
+
+export const ListExamData = [
+  {
+    header: "Subject",
+    accessor: "subject",
+  },
+  {
+    header: "Class",
+    accessor: "class",
+  },
+  {
+    header: "Teacher",
+    accessor: "teacher",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Date",
+    accessor: "date",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Actions",
+    accessor: "actions",
+  },
+];
+
+export const ListLessonData = [
+  {
+    header: "Subject",
+    accessor: "subject",
+  },
+  {
+    header: "Class",
+    accessor: "class",
+  },
+  {
+    header: "Teacher",
+    accessor: "teacher",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Actions",
+    accessor: "actions",
+  },
+];
+
+export const ListParentData = [
+  {
+    header: "Info",
+    accessor: "info",
+  },
+  {
+    header: "Student Name",
+    accessor: "students",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Phone",
+    accessor: "phone",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Address",
+    accessor: "addresss",
+    classes: "hidden lg:table-cell",
+  },
+  {
+    header: "Actions",
+    accessor: "actions",
+  },
+];
+
+export const ListResultData = [
+  {
+    header: "Subject",
+    accessor: "subject",
+  },
+  {
+    header: "Class",
+    accessor: "class",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Teacher",
+    accessor: "teacher",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Student",
+    accessor: "student",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Date",
+    accessor: "date",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Score",
+    accessor: "score",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Actions",
+    accessor: "actions",
+  },
+];
+
+export const ListStudentData = [
+  {
+    header: "Info",
+    accessor: "info",
+  },
+  {
+    header: "Student ID",
+    accessor: "studentId",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Grade",
+    accessor: "grade",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Phone",
+    accessor: "phone",
+    classes: "hidden lg:table-cell",
+  },
+  {
+    header: "Address",
+    accessor: "addresss",
+    classes: "hidden lg:table-cell",
+  },
+  {
+    header: "Actions",
+    accessor: "actions",
+  },
+];
+
+export const ListSubjectData = [
+  {
+    header: "Subject Name",
+    accessor: "subject",
+  },
+  {
+    header: "Teachers",
+    accessor: "teachers",
+    classes: "hidden md:table-cell",
+  },
+  {
+    header: "Actions",
+    accessor: "actions",
+  },
 ];

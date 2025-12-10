@@ -7,7 +7,7 @@ import { ListTeacherPerformaceData } from "@/lib/data";
 
 const Performance = () => {
   return (
-<div className="bg-primaryDark p-4 rounded-md h-80 relative shadow-md">
+<div className="bg-dodgerBlue p-4 rounded-md h-80 relative shadow-md">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-semibold ">Performance</h1>
         <MoreHorizontal className="w-4 h-4"/>

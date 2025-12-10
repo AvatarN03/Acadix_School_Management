@@ -1,7 +1,6 @@
 "use client";
 
 import { MoreHorizontal } from "lucide-react";
-import React from "react";
 import {
   CartesianGrid,
   Legend,
@@ -18,14 +17,14 @@ import { AdminFinanceData } from "@/lib/data";
 
 const FinanceChart = () => {
   return (
-    <div className="bg-softGray text-mutedBlue w-full h-full p-4 rounded-xl shadow-lg">
+    <div className="bg-babyBlue text-lavendar w-full h-full  rounded-xl shadow-lg">
       {/* title  */}
-      <div className="flex justify-between items-center shadow-xl mb-1">
+      <div className="flex justify-between items-center p-3 pb-1 shadow-xl mb-1">
         <h1 className="text-lg font-semibold">Finance</h1>
         <MoreHorizontal className="w-6 h-6 cursor-pointer" />
       </div>
       {/* charts  */}
-      <ResponsiveContainer width={"100%"} height={"90%"}>
+      <ResponsiveContainer width={"100%"} height={"90%"} className={"p-2"}>
         <LineChart data={AdminFinanceData}   margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
           <CartesianGrid
             strokeDasharray="3 3"
@@ -43,7 +42,7 @@ const FinanceChart = () => {
           <Tooltip
             contentStyle={{
               borderRadius: "10px",
-              background: "#ffffff",
+              background: "#C2BBF0",
             }}
             labelStyle={{ color: "#000" }}
             itemStyle={{ color: "#000" }}
@@ -58,7 +57,7 @@ const FinanceChart = () => {
           <Line
             type="monotone"
             dataKey="income"
-            stroke="#6B848F"
+            stroke="#0B63C1"
             strokeWidth={3}
             legendType="plainline"
           />
@@ -66,7 +65,7 @@ const FinanceChart = () => {
           <Line
             type="monotone"
             dataKey="expense"
-            stroke="#D39939"
+            stroke="#62BFED"
             strokeWidth={3}
             legendType="plainline"
           />

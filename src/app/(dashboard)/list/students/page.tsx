@@ -1,60 +1,22 @@
+import Link from "next/link";
+import Image from "next/image";
+
+import { Eye, Filter, SortAsc } from "lucide-react";
+
+import FormModel from "@/components/FormModel";
 import Pagination from "@/components/Pagination";
 import SearchInput from "@/components/SearchInput";
 import Table from "@/components/Table";
-import { role, studentsData } from "@/lib/data";
-import { Eye, Filter, Plus, SortAsc, Trash } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
 
-type StudentProps = {
-  id: string;
-  studentId: string;
-  name: string;
-  photo: string;
-  email?: string;
-grade:string;
-  phone: number;
-  class:string;
-  address: string;
-};
+import { ListStudentData, role, studentsData } from "@/lib/data";
 
-const columns = [
-  {
-    header: "Info",
-    accessor: "info",
-  },
-  {
-    header: "Student ID",
-    accessor: "studentId",
-    classes: "hidden md:table-cell",
-  },
-  {
-    header: "Grade",
-    accessor: "grade",
-    classes: "hidden md:table-cell",
-  },
-  {
-    header: "Phone",
-    accessor: "phone",
-    classes: "hidden lg:table-cell",
-  },
-  {
-    header: "Address",
-    accessor: "addresss",
-    classes: "hidden lg:table-cell",
-  },
-  {
-    header: "Actions",
-    accessor: "actions",
-  },
-];
+import { StudentProps } from "../../../../../types";
 
 const page = () => {
   const renderRow = (item: StudentProps) => (
     <tr
       key={item.id}
-      className="border-b-2 border-accentBrown  even:bg-sky-50 odd:bg-slate-50"
+      className="border-b-2 border-babyBlue  even:bg-sky-50 odd:bg-slate-50"
     >
       <td className="flex items-center gap-4 p-4">
         <Image
@@ -82,9 +44,10 @@ const page = () => {
             <Eye className="w-5 h-5" />
           </Link>
           {role === "admin" && (
-            <button className="flex justify-center items-center p-1 xl:p-2 rounded-full bg-purple-400">
-              <Trash className="w-5 h-5" />
-            </button>
+            <>
+              <FormModel table="student" type="update" data={item} />
+              <FormModel table="student" type="delete" id={item.id} />
+            </>
           )}
         </div>
       </td>
@@ -99,22 +62,22 @@ const page = () => {
         <div className="flex flex-col w-full md:w-auto md:flex-row justify-end gap-4 items-center">
           <SearchInput smScreen={true} />
           <div className="flex  self-end px-2 gap-2 items-center">
-            <button className="bg-accentGold p-2 rounded-full">
+            <button className="bg-periwinkle p-2 rounded-full">
               <Filter className="w-5 h-5" />
             </button>
-            <button className="bg-accentGold p-2 rounded-full">
+            <button className="bg-periwinkle p-2 rounded-full">
               <SortAsc className="w-5 h-5" />
             </button>
-            {role === "admin" && (
-              <button className="bg-accentGold p-2 rounded-full">
-                <Plus className="w-5 h-5" />
-              </button>
-            )}
+            {role === "admin" && <FormModel table="student" type="create" />}
           </div>
         </div>
       </div>
       {/* list  */}
-      <Table columns={columns} renderRow={renderRow} data={studentsData} />
+      <Table
+        columns={ListStudentData}
+        renderRow={renderRow}
+        data={studentsData}
+      />
 
       {/* pagination  */}
       <Pagination />

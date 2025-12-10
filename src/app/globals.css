@@ -5,6 +5,8 @@
 
 
 
+
+
 /* Scrollbar width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -12,19 +14,20 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #1e1f2b; 
+  background: #62BFED; 
 }
 
 /* Thumb */
 ::-webkit-scrollbar-thumb {
-  background: #DDA13C;
-  border-radius: 10px;
-  border: 2px solid #1e1f2b; 
+  background: #508FE2;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
 }
 
 /* Thumb on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #A16859;
+  background: #0B63C1;
 }
 
 
@@ -41,17 +44,13 @@
 .react-calendar {
   width: 100% !important;
   border: none !important;
-  font-family: "Inter", sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
 }
 
 .react-calendar__navigation__label__labelText {
   font-weight: 600;
 }
 
-.react-calendar__tile--active {
-  background-color: #c3ebfa !important;
-  color: black !important;
-}
 
 .rbc-btn-group:first-child {
   display: none !important;

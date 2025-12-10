@@ -8,9 +8,9 @@ import FinanceChart from "@/components/FinanceChart";
 import UserCard from "@/components/UserCard";
 
 const page = () => (
-  <div className="p-2 md:p-4 flex flex-col gap-1 md:flex-row ">
+  <div className="p-2 md:p-4 flex flex-col gap-8 md:gap-4 md:flex-row ">
     {/* left  */}
-    <div className="w-full lg:w-2/3 flex flex-col gap-4">
+    <div className="w-full lg:w-2/3 flex flex-col gap-4 md:gap-8">
       {/* user card  */}
       <div className="flex justify-between gap-4 flex-wrap">
         <UserCard type="student" />
@@ -20,7 +20,7 @@ const page = () => (
       </div>
       {/* middle charts  */}
       <div className="flex gap-4 flex-col lg:flex-row">
-        <div className="w-full lg:w-1/3  h-[350px] md:h-[450px]">
+        <div className="w-full lg:w-1/3  h-[450px] md:h-[450px]">
           <CountChart />
         </div>
         <div className="w-full h-[350px] md:h-[450px] lg:w-2/3">
@@ -31,7 +31,7 @@ const page = () => (
         <FinanceChart />
       </div>
     </div>
-    <div className="w-full lg:w-1/3 flex flex-col gap-4">
+    <div className="w-full md:w-1/3 flex flex-col gap-4">
       <EventCalendar />
       <Announcement />
     </div>

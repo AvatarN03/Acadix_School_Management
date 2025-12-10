@@ -17,14 +17,14 @@ import { MoreHorizontal } from "lucide-react";
 
 const AttendanceChart = () => {
   return (
-    <div className="bg-softGray w-full h-full p-4 text-mutedBlue rounded-xl shadow-lg">
+    <div className="bg-dodgerBlue w-full h-full text-lavendar rounded-xl shadow-lg">
       {/* title  */}
-      <div className="flex justify-between items-center shadow-xl">
+      <div className="flex justify-between items-center shadow-xl p-3 pb-1">
         <h1 className="text-lg font-semibold">Attendence</h1>
        <MoreHorizontal className="w-6 h-6 cursor-pointer" />
       </div>
       {/* charts  */}
-        <ResponsiveContainer width={"100%"} height={"90%"}>
+        <ResponsiveContainer width={"100%"} height={"90%"} className={"p-1"}>
           <BarChart
             responsive
             data={AdminAttendenceData}
@@ -36,7 +36,7 @@ const AttendanceChart = () => {
              <Tooltip
                contentStyle={{
                  borderRadius: "10px",
-                 background: "#ffffff",
+                 background: "#C2BBF0",
                }}
                labelStyle={{ color: "#000" }}
                itemStyle={{ color: "#000" }}
@@ -46,13 +46,13 @@ const AttendanceChart = () => {
             }}/>
             <Bar
               dataKey="present"
-              fill="#6B848F"
+              fill="#62BFED"
               legendType="circle"
               radius={[3,3,0,0]}
             />
             <Bar
               dataKey="absent"
-              fill="#D39939"
+              fill="#508FE2"
               legendType="circle"
               radius={[3,3,0,0]}
             />
