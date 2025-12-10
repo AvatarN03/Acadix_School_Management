@@ -1,26 +1,19 @@
-# Lama Dev School Management Dashboard
+# Acadix_School_Management
 
-## Getting Started
+A modern School Management Dashboard built with Next.js and Recharts — designed to help administrators, teachers and staff manage students, classes, schedules, and visualize reports via interactive charts.
 
-First, run the development server:
+## 🔧 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- User-friendly interface using Next.js (React + SSR / SSG capabilities).  
+- Interactive data visualizations using Recharts (charts for attendance, performance, class statistics, etc.).  
+- Manage Students, Teachers, Classes, Schedules (CRUD operations).  
+- Role-based access (Admin / Teacher / perhaps Student) — control what data each user sees.  
+- Responsive & modern UI (mobile and desktop friendly).  
+- Extensible — easy to add more modules (exams, assignments, library, etc.) in future.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Lama Dev Youtube Channel](https://youtube.com/lamadev) 
-- [Next.js](https://nextjs.org/learn)
+- Frontend: Next.js  
+- Charting: Recharts :contentReference[oaicite:3]{index=3}  
+- Styling: (Tailwind CSS / your chosen CSS framework)  
+- Data / State Handling: (your config, e.g. React state / context / API + database — update as per project)  
