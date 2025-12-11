@@ -12,7 +12,7 @@ const Table = ({
   return (
     <table className="w-full mt-4">
       <thead>
-        <tr className="text-left text-gray-300 text-sm">
+        <tr className="text-left text-periwinkle text-sm">
           {columns.map((col, index) => (
             <th key={index} className={col.classes && col.classes}>
               {col.header}

@@ -3,14 +3,13 @@ import BigCalendar from "@/components/BigCalendar";
 import EventCalendar from "@/components/EventCalendar";
 
 
-const page = () => {
-  
+const page = () => { 
 
   return (
     <div className="p-3 flex gap-4 flex-col xl:flex-row">
       {/* left  */}
       <div className="w-full h-full  xl:w-2/3">
-        <div className="h-auto md:h-[88vh]  bg-lavendar text-deepSky p-4 rounded-md shadow-md">
+        <div className="h-screen md:h-[88vh]  bg-dodgerBlue text-deepSky p-4 rounded-md shadow-md">
           <h1 className="text-xl font-semibold">Schedule (4A)</h1>
          <BigCalendar />
         </div>

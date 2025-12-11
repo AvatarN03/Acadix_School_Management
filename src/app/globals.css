@@ -1,25 +1,20 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
-
-
 /* Scrollbar width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #62BFED; 
+  background: #62bfed;
 }
 
 /* Thumb */
 ::-webkit-scrollbar-thumb {
-  background: #508FE2;
+  background: #508fe2;
   border-radius: 2px;
   border: none;
   cursor: pointer;
@@ -27,9 +22,8 @@
 
 /* Thumb on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #0B63C1;
+  background: #0b63c1;
 }
-
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -40,7 +34,6 @@
   scrollbar-width: none; /* Firefox */
 }
 
-
 .react-calendar {
   width: 100% !important;
   border: none !important;
@@ -50,7 +43,6 @@
 .react-calendar__navigation__label__labelText {
   font-weight: 600;
 }
-
 
 .rbc-btn-group:first-child {
   display: none !important;
@@ -72,17 +64,16 @@
 }
 
 .rbc-toolbar button.rbc-active {
-  background-color: #DDA13C !important;
+  background-color: #ead4ed !important;
   box-shadow: none !important;
 }
 
 .rbc-time-view {
   border-color: transparent !important;
-  border-radius: 12px;
+  border-radius: 5px;
   overflow: hidden;
-
+  background: #508fe2 !important;
 }
-
 
 .rbc-time-header {
   display: none !important;
@@ -90,16 +81,17 @@
 
 .rbc-time-content {
   border: none !important;
-  background: #1e1f2b !important;
+  padding: 10px;
 }
 
 .rbc-time-gutter.rbc-time-column {
-  font-size: 12px !important;
+  font-size: 15px !important;
+  text-align: left !important;
 }
 
-.rbc-time-gutter.rbc-time-column .rbc-timeslot-group {
-  padding: 0px 20px !important;
-}
+/* .rbc-time-gutter.rbc-time-column .rbc-timeslot-group {
+
+} */
 
 .rbc-timeslot-group {
   background-color: #f7fdff !important;
@@ -111,19 +103,33 @@
 
 .rbc-event {
   border: none !important;
-  color: #DDA13C !important;
+  min-height: 30px !important;
 }
 
 .rbc-event:nth-child(even) {
-  background-color: #1e1f2b !important;
+  background-color: #c2bbf0 !important;
+  color: #1e1f2b !important;
+    
 }
 .rbc-event:nth-child(odd) {
-  background-color: #699AA7 !important;
+  background-color: #62bfed !important;
   color: #1e1f2b !important;
 }
 
-
-.rbc-event-label{
+.rbc-event-label {
   color: #384054 !important;
   margin-bottom: 5px;
+}
+
+@media (max-width: 650px) {
+  .rbc-time-content {
+    padding: 0px;
+  }
+  .rbc-time-gutter.rbc-time-column {
+    font-size: 10px !important;
+  }
+
+  .rbc-day-slot {
+    font-size: 10px !important;
+  }
 }

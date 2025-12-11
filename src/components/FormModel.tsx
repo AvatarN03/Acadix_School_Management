@@ -10,11 +10,10 @@ const form: {
   [key: string]: (type: "create" | "update", data?: any) => JSX.Element;
 } = {
   teacher: (type, data) => <TeacherForm type={type} data={data} />,
-  student: (type, data) => <StudentForm type={type} data={data} />
+  student: (type, data) => <StudentForm type={type} data={data} />,
 };
 
 const FormModel = ({ table, type, data, id }: FormModelProps) => {
-  const size = type === "create" ? "w-8 h-8" : "w-7 h-7";
   const bgColor =
     type === "create"
       ? "bg-periwinkle"
@@ -27,7 +26,7 @@ const FormModel = ({ table, type, data, id }: FormModelProps) => {
   const Icon: LucideIcon =
     type === "create" ? Plus : type === "update" ? Edit : Trash2;
 
-  const onSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("delted ");
     setOpen(false);
@@ -56,18 +55,20 @@ const FormModel = ({ table, type, data, id }: FormModelProps) => {
   return (
     <>
       <div
-        className={`${bgColor} p-2 rounded-full cursor-pointer`}
+        className={`${bgColor} p-2 rounded-full cursor-pointer hover:bg-deepSky`}
         onClick={() => setOpen(true)}
       >
-        {<Icon className={`${size}text-black`} />}
+        {<Icon className="w-5 h-5" />}
       </div>
       {open && (
         <div className="w-screen h-screen  flex justify-center items-center absolute inset-0 bg-black bg-opacity-50 z-50">
-          <div className="bg-white  text-black rounded-md relative w-[90%] md:w-[75%] lg:w-[60%] xl:w-[50%] 2xl:w-[45%] p-4">
-            <X
-              className="absolute right-2 top-2 cursor-pointer"
+          <div className="bg-lavendar overflow-x-hidden  text-black rounded-md relative w-[90%] md:w-[75%] lg:w-[60%] xl:w-[50%] 2xl:w-[45%] p-4">
+            <div
+              className="absolute right-2 top-2 p-2  bg-periwinkle    hover:bg-deepSky rounded-full cursor-pointer"
               onClick={() => setOpen(false)}
-            />
+            >
+              <X />
+            </div>
             <div className="mt-8 h-full">
               <Form />
             </div>

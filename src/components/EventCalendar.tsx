@@ -21,9 +21,9 @@ const EventCalendar = () => {
         {
           events.map((event)=>(
             <div key={event.id} className="p-2 md:p-5 border-t-4 
-             odd:bg-deepSky even:bg-babyBlue border-t-dodgerBlue  text-lavendar rounded-xl">
+             odd:bg-dodgerBlue even:bg-babyBlue border-t-deepSky  text-lavendar rounded-xl">
               <div className="flex items-center justify-between gap-2">
-                <h1 className="font-semibold text-gray-300">{event.title}</h1>
+                <h1 className="font-semibold text-lavendar">{event.title}</h1>
                 <span className="text-white/70 text-xs">{event.time}</span>
               </div>
               <p className="text-xs lg:text-sm mt-2">{event.description}</p>

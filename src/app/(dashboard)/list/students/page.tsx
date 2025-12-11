@@ -16,7 +16,7 @@ const page = () => {
   const renderRow = (item: StudentProps) => (
     <tr
       key={item.id}
-      className="border-b-2 border-babyBlue  even:bg-sky-50 odd:bg-slate-50"
+      className="border-b-2  border-black group even:text-periwinkle even:bg-dodgerBlue/50 odd:bg-deepSky/50"
     >
       <td className="flex items-center gap-4 p-4">
         <Image
@@ -27,22 +27,16 @@ const page = () => {
           className="hidden xl:block w-10 h-10 rounded-full object-cover"
         />
         <div className="flex flex-col">
-          <h3 className="font-semibold">{item.name}</h3>
-          <p className="text-xs text-gray-600">{item?.class}</p>
+          <h3 className="font-normal">{item.name}</h3>
+          <p className="text-xs group-odd:text-dodgerBlue group-even:text-lavendar/80">{item?.class}</p>
         </div>
       </td>
-      <td className="hidden md:table-cell">{item.studentId}</td>
+      <td className="hidden sm:table-cell">{item.studentId}</td>
       <td className="hidden md:table-cell">{item.grade}</td>
       <td className="hidden lg:table-cell">{item.phone}</td>
-      <td className="hidden lg:table-cell">{item.address}</td>
+      <td className="hidden truncate xl:table-cell">{item.address}</td>
       <td>
-        <div className="flex items-center gap-2">
-          <Link
-            href={`/list/teacher/${item.studentId}`}
-            className="flex justify-center items-center p-1 xl:p-2 rounded-full bg-sky-400"
-          >
-            <Eye className="w-5 h-5" />
-          </Link>
+        <div className="flex items-center gap-2 px-2 justify-end md:justify-center">
           {role === "admin" && (
             <>
               <FormModel table="student" type="update" data={item} />
@@ -55,17 +49,17 @@ const page = () => {
   );
 
   return (
-    <div className="bg-white rounded-md p-4 m-4 mt-0">
+    <div className="bg-babyBlue rounded-md p-4 m-4 mt-0">
       {/* top  */}
-      <div className="flex justify-between items-center">
-        <h1 className="hidden md:block text-lg font-semibold">All Students</h1>
+      <div className="flex justify-between items-center flex-col md:flex-row gap-1">
+        <h1 className="block text-lg font-normal tracking-wider">All Students</h1>
         <div className="flex flex-col w-full md:w-auto md:flex-row justify-end gap-4 items-center">
           <SearchInput smScreen={true} />
           <div className="flex  self-end px-2 gap-2 items-center">
-            <button className="bg-periwinkle p-2 rounded-full">
+            <button className="bg-periwinkle hover:bg-deepSky p-2 rounded-full">
               <Filter className="w-5 h-5" />
             </button>
-            <button className="bg-periwinkle p-2 rounded-full">
+            <button className="bg-periwinkle hover:bg-deepSky p-2 rounded-full">
               <SortAsc className="w-5 h-5" />
             </button>
             {role === "admin" && <FormModel table="student" type="create" />}

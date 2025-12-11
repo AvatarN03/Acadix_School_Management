@@ -18,10 +18,10 @@ export default function DahboardLayout({
       >
         <Link
           href={"/"}
-          className="flex items-center shadow-md p-3 w-full justify-center lg:justify-start gap-2 my-2"
+          className="flex items-center shadow-md p-3 w-full justify-center lg:justify-start gap-2 my-4"
         >
-          <Image src={"/logo.png"} alt="logo" width={52} height={52} />
-          <span className="hidden lg:block text-deepSky  font-bold text-2xl">Acadix</span>
+          <Image src={"/logo.png"} alt="logo" width={52} height={52} className="mix-blend-multiply"/>
+          <span className="hidden lg:block text-dodgerBlue  font-bold text-2xl">Acadix</span>
         </Link>
         <div className="flex-1 overflow-y-auto  mb-8 no-scrollbar p-[0.5px] md:p-3">
           <Menu />

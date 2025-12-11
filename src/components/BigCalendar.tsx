@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import moment from "moment";
 import { Calendar, momentLocalizer, View, Views } from "react-big-calendar";
@@ -15,6 +15,24 @@ const BigCalendar = () => {
   const handleOnChangeView = (selectedView:View)=>{
     setView(selectedView)
   }
+
+useEffect(() => {
+  const calenderDefault = () => {
+    if (window.innerWidth < 550) {
+      setView(Views.DAY);
+    }
+  };
+
+  // run once on mount
+  calenderDefault();
+
+  // add listener
+  window.addEventListener("resize", calenderDefault);
+
+  // cleanup
+  return () => window.removeEventListener("resize", calenderDefault);
+}, []);
+
 
   return (
     <div className="h-full w-full">

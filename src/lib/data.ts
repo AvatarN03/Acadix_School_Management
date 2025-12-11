@@ -1314,7 +1314,7 @@ export const TeacherColumns = [
   {
     header: "Subjects",
     accessor: "subjects",
-    classes: "hidden md:table-cell",
+    classes: "hidden sm:table-cell",
   },
   {
     header: "Classes",
@@ -1329,11 +1329,12 @@ export const TeacherColumns = [
   {
     header: "Address",
     accessor: "addresss",
-    classes: "hidden lg:table-cell",
+    classes: "hidden xl:table-cell",
   },
   {
     header: "Actions",
     accessor: "actions",
+    classes:"text-right md:text-left"
   },
 ];
 
@@ -1350,6 +1351,7 @@ export const ListAnnouncementData = [
   {
     header: "Class",
     accessor: "class",
+    classes: "hidden sm:table-cell",
   },
   {
     header: "Date",
@@ -1359,6 +1361,7 @@ export const ListAnnouncementData = [
   {
     header: "Actions",
     accessor: "actions",
+     classes:"text-right md:text-left"
   },
 ];
 
@@ -1370,6 +1373,7 @@ export const ListAssignmentData = [
   {
     header: "Class",
     accessor: "class",
+    classes: "hidden lg:table-cell",
   },
   {
     header: "Teacher",
@@ -1379,11 +1383,12 @@ export const ListAssignmentData = [
   {
     header: "Deadline",
     accessor: "deadline",
-    classes: "hidden md:table-cell",
+    classes: "hidden sm:table-cell",
   },
   {
     header: "Actions",
     accessor: "actions",
+     classes:"text-right md:text-left"
   },
 ];
 
@@ -1395,12 +1400,12 @@ export const ListClassData = [
   {
     header: "Capacity",
     accessor: "capacity",
-    classes: "hidden md:table-cell",
+    classes: "hidden lg:table-cell",
   },
   {
     header: "Supervisor",
     accessor: "supervisor",
-    classes: "hidden md:table-cell",
+    classes: "hidden sm:table-cell text-center md:text-left",
   },
   {
     header: "Grade",
@@ -1410,6 +1415,7 @@ export const ListClassData = [
   {
     header: "Actions",
     accessor: "actions",
+     classes:"text-right md:text-left"
   },
 ];
 
@@ -1417,16 +1423,17 @@ export const ListEventData = [
   {
     header: "Title",
     accessor: "title",
+    classes: "hidden sm:table-cell",
   },
   {
     header: "Class",
     accessor: "class",
-    classes: "hidden md:table-cell",
+    classes: "hidden lg:table-cell",
   },
   {
     header: "startTime",
     accessor: "starttime",
-    classes: "hidden md:table-cell",
+    classes: "hidden sm:table-cell",
   },
   {
     header: "EndTime",
@@ -1440,6 +1447,7 @@ export const ListEventData = [
   {
     header: "Actions",
     accessor: "actions",
+     classes:"text-right md:text-left"
   },
 ];
 
@@ -1451,11 +1459,12 @@ export const ListExamData = [
   {
     header: "Class",
     accessor: "class",
+    classes: "hidden sm:table-cell",
   },
   {
     header: "Teacher",
     accessor: "teacher",
-    classes: "hidden md:table-cell",
+    classes: "hidden lg:table-cell",
   },
   {
     header: "Date",
@@ -1465,6 +1474,7 @@ export const ListExamData = [
   {
     header: "Actions",
     accessor: "actions",
+     classes:"text-right md:text-left"
   },
 ];
 
@@ -1485,6 +1495,7 @@ export const ListLessonData = [
   {
     header: "Actions",
     accessor: "actions",
+     classes:"text-right md:text-left"
   },
 ];
 
@@ -1496,7 +1507,7 @@ export const ListParentData = [
   {
     header: "Student Name",
     accessor: "students",
-    classes: "hidden md:table-cell",
+    classes: "hidden sm:table-cell",
   },
   {
     header: "Phone",
@@ -1506,11 +1517,12 @@ export const ListParentData = [
   {
     header: "Address",
     accessor: "addresss",
-    classes: "hidden lg:table-cell",
+    classes: "hidden xl:table-cell",
   },
   {
     header: "Actions",
     accessor: "actions",
+     classes:"text-right md:text-left"
   },
 ];
 
@@ -1522,12 +1534,12 @@ export const ListResultData = [
   {
     header: "Class",
     accessor: "class",
-    classes: "hidden md:table-cell",
+    classes: "hidden lg:table-cell",
   },
   {
     header: "Teacher",
     accessor: "teacher",
-    classes: "hidden md:table-cell",
+    classes: "hidden lg:table-cell",
   },
   {
     header: "Student",
@@ -1542,11 +1554,12 @@ export const ListResultData = [
   {
     header: "Score",
     accessor: "score",
-    classes: "hidden md:table-cell",
+    classes: "hidden sm:table-cell",
   },
   {
     header: "Actions",
     accessor: "actions",
+     classes:"text-right md:text-left"
   },
 ];
 
@@ -1558,7 +1571,7 @@ export const ListStudentData = [
   {
     header: "Student ID",
     accessor: "studentId",
-    classes: "hidden md:table-cell",
+    classes: "hidden sm:table-cell",
   },
   {
     header: "Grade",
@@ -1573,11 +1586,12 @@ export const ListStudentData = [
   {
     header: "Address",
     accessor: "addresss",
-    classes: "hidden lg:table-cell",
+    classes: "hidden xl:table-cell",
   },
   {
     header: "Actions",
     accessor: "actions",
+     classes:"text-right md:text-left"
   },
 ];
 
@@ -1589,10 +1603,11 @@ export const ListSubjectData = [
   {
     header: "Teachers",
     accessor: "teachers",
-    classes: "hidden md:table-cell",
+    classes: "hidden md:table-cell text-center",
   },
   {
     header: "Actions",
     accessor: "actions",
+     classes:"text-right md:text-left"
   },
 ];
