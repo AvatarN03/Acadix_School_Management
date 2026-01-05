@@ -2,7 +2,9 @@
 
 A comprehensive school management system built with Next.js, TypeScript, and Tailwind CSS. This dashboard provides role-based interfaces for administrators, teachers, students, and parents to manage educational operations efficiently.
 
-![Dashboard Preview](public/logo.png)
+<img src="public/logo.png" width="200" alt="Dashboard Preview" />
+<img width="1899" height="936" alt="image" src="https://github.com/user-attachments/assets/db3988b0-32c7-4c29-92f2-380667368348" />
+
 
 ## 🌟 Features
 
@@ -416,7 +418,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 Your Name  
 📧 Email: jsprashanth003@gmail.com
-🔗 LinkedIn: [AvatarN03](https://linkedin.com/in/prashanth-naidu-03)  
+🔗 LinkedIn: [Prashanth Naidu](https://linkedin.com/in/prashanth-naidu03)  
 🐙 GitHub: [AvatarN03](https://github.com/AvatarN03)
 
 ---
