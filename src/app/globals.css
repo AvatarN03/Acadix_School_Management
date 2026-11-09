@@ -2,27 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --bento-canvas: #f8fafc;
+    --bento-card: #ffffff;
+    --bento-card-muted: #f1f5f9;
+    --bento-border: #e2e8f0;
+    --bento-border-hover: #cbd5e1;
+    --bento-text-primary: #0f172a;
+    --bento-text-secondary: #475569;
+    --bento-text-muted: #94a3b8;
+    --bento-primary: #2563eb;
+    --bento-primary-hover: #1d4ed8;
+    --bento-primary-subtle: #eff6ff;
+
+    /* Role Colors */
+    --role-admin: #4f46e5;
+    --role-admin-subtle: #eef2ff;
+    --role-teacher: #059669;
+    --role-teacher-subtle: #ecfdf5;
+    --role-student: #7c3aed;
+    --role-student-subtle: #f5f3ff;
+    --role-parent: #d97706;
+    --role-parent-subtle: #fffbeb;
+  }
+
+  body {
+    background-color: var(--bento-canvas);
+    color: var(--bento-text-primary);
+  }
+
+  ::selection {
+    background: #cfe4d7;
+    color: #17212b;
+  }
+}
+
 /* Scrollbar width */
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #62bfed;
+  background: #f1f5f9;
 }
 
 /* Thumb */
 ::-webkit-scrollbar-thumb {
-  background: #508fe2;
-  border-radius: 2px;
+  background: #cbd5e1;
+  border-radius: 9999px;
   border: none;
   cursor: pointer;
 }
 
 /* Thumb on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #0b63c1;
+  background: #94a3b8;
 }
 
 .no-scrollbar::-webkit-scrollbar {
