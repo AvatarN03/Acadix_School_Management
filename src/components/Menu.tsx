@@ -1,37 +1,42 @@
-import Link from "next/link";
+"use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { menuItems, role } from "@/lib/data";
 
 const Menu = () => {
-  return (
-    <div className="text-sm h-full">
-      {menuItems.map((menu, index) => (
-        <div key={index} className="flex flex-col gap-2">
-          <span className="hidden lg:block">
-            {menu.title}
-          </span>
-          <hr
-      className={`${index === 0 ? "hidden lg:block" : ""} h-[3.5px] w-[80%] mx-auto md:mx-0 bg-deepSky`}
-    />
+  const pathname = usePathname();
 
-          {menu.items.map((item, idx) => {
-            if (item.visible.includes(role)) {
-              return (
-                <Link
-                  href={item.href}
-                  key={idx}
-                  className="flex items-center justify-center group rounded-md lg:justify-start hover:shadow hover:bg-periwinkle  hover:text-dodgerBlue  gap-4 p-2"
-                  title={item.label}
-                >
-                  <item.icon className="w-5 md:w-7 h-5 md:h-7 group-hover:text-dodgerBlue" />
-                  <span className="hidden ml-0 group-hover:ml-2 lg:block  transition-all ease-in-out duration-300  truncate">{item.label}</span>
-                </Link>
-              );
-            }
-          })}
+  return (
+    <nav className="text-xs space-y-4">
+      {menuItems.map((section, index) => (
+        <div key={index} className="space-y-1">
+            <span className="hidden lg:block text-[10px] font-bold uppercase tracking-wider text-slate-500 px-3 py-1">
+            {section.title}
+          </span>
+
+          <div className="space-y-0.5">
+            {section.items.map((item, idx) => {
+              if (item.visible.includes(role)) {
+                const IconComponent = item.icon;
+                return (
+                  <Link
+                    href={item.href}
+                    key={idx}
+                    className={`flex items-center justify-center lg:justify-start gap-3 px-3 py-2 rounded-xl font-medium transition-colors group ${pathname === item.href || (item.href === "/dashboard" && pathname === "/dashboard") ? "bg-[#e8f2ec] text-[#274936]" : "text-slate-700 hover:text-slate-900 hover:bg-slate-100"}`}
+                    title={item.label}
+                  >
+                    <IconComponent className={`w-4 h-4 transition-colors flex-shrink-0 ${pathname === item.href ? "text-[#4e8964]" : "text-slate-500 group-hover:text-[#4e8964]"}`} />
+                    <span className="hidden lg:block truncate">{item.label}</span>
+                  </Link>
+                );
+              }
+              return null;
+            })}
+          </div>
         </div>
       ))}
-    </div>
+    </nav>
   );
 };
 

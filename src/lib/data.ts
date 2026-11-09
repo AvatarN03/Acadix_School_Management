@@ -10,7 +10,6 @@ import {
   FileTextIcon,
   GraduationCap,
   Home,
-  LogOut,
   Megaphone,
   MessageSquare,
   Notebook,
@@ -24,18 +23,26 @@ import {
 
 import { AnnouncementDataProps, MenuItemProps, TeacherProfileProp } from "../../types";
 
-export let role = "admin";
+// Temporary role until authentication is connected. The menu remains role-aware
+// so this single value can later come from the signed-in user's session.
+export type DashboardRole = "admin" | "teacher" | "student" | "parent";
+export const role: DashboardRole = "admin";
 
 export const menuItems: MenuItemProps[] = [
   {
-    title: "MENU",
+    title: "OVERVIEW",
     items: [
       {
         icon: Home,
         label: "Home",
-        href: "/admin",
+        href: "/dashboard",
         visible: ["admin", "teacher", "student", "parent"],
       },
+    ],
+  },
+  {
+    title: "PEOPLE",
+    items: [
       {
         icon: Users,
         label: "Teachers",
@@ -54,6 +61,11 @@ export const menuItems: MenuItemProps[] = [
         href: "/list/parents",
         visible: ["admin", "teacher"],
       },
+    ],
+  },
+  {
+    title: "ACADEMICS",
+    items: [
       {
         icon: BookOpen,
         label: "Subjects",
@@ -90,6 +102,11 @@ export const menuItems: MenuItemProps[] = [
         href: "/list/results",
         visible: ["admin", "teacher", "student", "parent"],
       },
+    ],
+  },
+  {
+    title: "COMMUNICATION",
+    items: [
       {
         icon: CheckSquare,
         label: "Attendance",
@@ -117,7 +134,7 @@ export const menuItems: MenuItemProps[] = [
     ],
   },
   {
-    title: "OTHER",
+    title: "ACCOUNT",
     items: [
       {
         icon: User,
@@ -129,12 +146,6 @@ export const menuItems: MenuItemProps[] = [
         icon: Settings,
         label: "Settings",
         href: "/settings",
-        visible: ["admin", "teacher", "student", "parent"],
-      },
-      {
-        icon: LogOut,
-        label: "Logout",
-        href: "/logout",
         visible: ["admin", "teacher", "student", "parent"],
       },
     ],

@@ -10,28 +10,35 @@ export default function DahboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="h-screen flex">
-      {/* left  */}
-      <div
-        className="w-[14%] md:w-[8%] lg:w-[16%] xl:w-[14%] 
-     min-h-screen flex flex-col bg-lavendar"
+    <div className="h-screen flex bg-bento-canvas text-slate-800 antialiased overflow-hidden">
+      {/* left sidebar */}
+      <aside
+        className="w-[72px] md:w-[84px] lg:w-[15%] xl:w-[13%] 
+     min-h-screen flex flex-col bg-white border-r border-slate-200/80 z-20"
       >
         <Link
           href={"/"}
-          className="flex items-center shadow-md p-3 w-full justify-center lg:justify-start gap-2 my-4"
+          className="flex items-center px-4 py-4 w-full justify-center lg:justify-start gap-3 border-b border-slate-100"
         >
-          <Image src={"/logo.png"} alt="logo" width={52} height={52} className="mix-blend-multiply"/>
-          <span className="hidden lg:block text-dodgerBlue  font-bold text-2xl">Acadix</span>
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-sm flex-shrink-0">
+            <Image src={"/logo.png"} alt="logo" width={28} height={28} className="brightness-0 invert" />
+          </div>
+          <div className="hidden lg:flex flex-col">
+            <span className="text-slate-900 font-bold text-lg tracking-tight">Acadix</span>
+            <span className="text-[11px] text-slate-400 font-medium -mt-1">School Portal</span>
+          </div>
         </Link>
-        <div className="flex-1 overflow-y-auto  mb-8 no-scrollbar p-[0.5px] md:p-3">
+        <div className="flex-1 overflow-y-auto no-scrollbar p-2 lg:p-3">
           <Menu />
         </div>
-      </div>
+      </aside>
 
-      {/* right  */}
-      <div className="w-[86%] md:w-[92%] lg:w-[88%] xl:w-[86%] bg-deepSky overflow-y-scroll">
+      {/* right main content */}
+      <div className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
         <Navbar />
-        {children}
+        <main className="flex-1 overflow-y-auto p-3 md:p-6">
+          {children}
+        </main>
       </div>
     </div>
   );

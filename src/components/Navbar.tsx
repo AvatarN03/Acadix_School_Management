@@ -1,32 +1,58 @@
-
-import { Megaphone, MessageCircleMore, User2 } from "lucide-react";
-
+import Image from "next/image";
+import { Megaphone, MessageSquare, Bell } from "lucide-react";
 import SearchInput from "./SearchInput";
 
 const Navbar = () => {
   return (
-    <div className="flex items-center justify-between p-4 backdrop-blur bg-dodgerBlue  rounded-md m-2 shadow-md">
+    <header className="bg-white border-b border-slate-200/80 px-4 md:px-6 py-3 flex items-center justify-between sticky top-0 z-30">
+      {/* Search Input */}
       <SearchInput smScreen={false} />
 
-      <div className="flex  items-center justify-end w-full gap-3 md:gap-6">
-        <div className="bg-periwinkle hover:bg-deepSky rounded-full p-2 flex justify-center items-center cursor-pointer">
-          <MessageCircleMore className="w-6 h-6" />
-        </div>
-        <div className="bg-periwinkle hover:bg-deepSky rounded-full p-2 flex justify-center items-center cursor-pointer relative">
-          <Megaphone className="w-6 h-6" />
-          <div className="absolute w-5 h-5 -top-2 -right-1 flex justify-center items-center  text-xs rounded-full bg-deepSky">
+      {/* Right Controls */}
+      <div className="flex items-center justify-end gap-3 md:gap-4 ml-auto">
+        {/* Messages */}
+        <button
+          type="button"
+          className="w-9 h-9 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200/80 flex items-center justify-center text-slate-600 transition-colors"
+          title="Messages"
+        >
+          <MessageSquare className="w-4 h-4" />
+        </button>
+
+        {/* Announcements */}
+        <button
+          type="button"
+          className="w-9 h-9 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200/80 flex items-center justify-center text-slate-600 transition-colors relative"
+          title="Announcements"
+        >
+          <Bell className="w-4 h-4" />
+          <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-blue-600 text-white text-[10px] font-bold flex items-center justify-center">
             2
+          </span>
+        </button>
+
+        <div className="h-6 w-px bg-slate-200 hidden sm:block mx-1" />
+
+        {/* User Profile */}
+        <div className="flex items-center gap-3">
+          <div className="hidden sm:flex flex-col text-right">
+            <span className="text-xs font-bold text-slate-900 leading-tight">John Doe</span>
+            <span className="text-[10px] font-semibold text-indigo-600 uppercase tracking-wider">
+              Admin
+            </span>
+          </div>
+          <div className="w-9 h-9 rounded-xl bg-slate-100 border border-slate-200 overflow-hidden flex items-center justify-center flex-shrink-0">
+            <Image
+              src="/avatar.png"
+              alt="User Avatar"
+              width={36}
+              height={36}
+              className="object-cover"
+            />
           </div>
         </div>
-        <div className="flex flex-col gap-1 text-periwinkle">
-          <span className="text-sm leading-3 font-medium">John Doe</span>
-          <span className="text-xs text-gray-300 text-right">Admin</span>
-        </div>
-        <div className="bg-lavendar rounded-full cursor-pointer p-2 flex justify-center items-center">
-          <User2 />
-        </div>
       </div>
-    </div>
+    </header>
   );
 };
 

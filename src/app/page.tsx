@@ -2,13 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, BarChart3, CalendarDays, LayoutGrid } from "lucide-react";
 
-const roleLinks = [["Admin", "/admin"], ["Teacher", "/teacher"], ["Student", "/student"], ["Parent", "/parent"]];
 export default function Homepage() {
   return <main className="min-h-screen overflow-hidden bg-[#f5f7fa] text-[#16202b]">
     <div className="mx-auto max-w-7xl px-5 py-5 sm:px-8 sm:py-8 lg:px-10">
       <header className="flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3"><span className="flex h-10 w-10 items-center justify-center rounded-[13px] bg-[#17212b] shadow-[0_8px_20px_rgba(23,33,43,0.16)]"><Image src="/logo.png" alt="" width={24} height={24} className="brightness-0 invert" /></span><span className="text-[17px] font-semibold tracking-[-0.03em]">Acadix</span></Link>
-        <nav className="flex items-center gap-3 sm:gap-5" aria-label="Role shortcuts"><div className="hidden items-center gap-4 text-xs font-medium text-[#7a8791] sm:flex">{roleLinks.map(([label, href]) => <Link key={href} href={href} className="transition-colors hover:text-[#17212b]">{label}</Link>)}</div><span className="hidden h-4 w-px bg-[#d5dce1] sm:block" /><Link href="/sign-in" className="group inline-flex items-center gap-2 text-sm font-semibold text-[#51606d] transition-colors hover:text-[#17212b]">Sign in <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></Link></nav>
+        <nav className="flex items-center gap-3 sm:gap-5" aria-label="Primary navigation"><Link href="/dashboard" className="hidden text-xs font-medium text-[#7a8791] transition-colors hover:text-[#17212b] sm:block">Open dashboard</Link><span className="hidden h-4 w-px bg-[#d5dce1] sm:block" /><Link href="/sign-in" className="group inline-flex items-center gap-2 text-sm font-semibold text-[#51606d] transition-colors hover:text-[#17212b]">Sign in <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></Link></nav>
       </header>
 
       <section className="mt-8 grid gap-4 lg:grid-cols-[1.45fr_0.55fr]">
