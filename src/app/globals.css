@@ -77,6 +77,25 @@
   font-family: "Poppins", sans-serif !important;
 }
 
+.react-calendar button {
+  color: #52636d;
+}
+
+.react-calendar__tile--active,
+.react-calendar__tile--hasActive {
+  background: #6b9a7c !important;
+  color: #ffffff !important;
+  border-radius: 8px;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus,
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background: #e5eee8 !important;
+  border-radius: 8px;
+}
+
 .react-calendar__navigation__label__labelText {
   font-weight: 600;
 }

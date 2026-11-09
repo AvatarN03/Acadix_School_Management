@@ -14,12 +14,12 @@ const form: {
 };
 
 const FormModel = ({ table, type, data, id }: FormModelProps) => {
-  const bgColor =
+  const buttonStyle =
     type === "create"
-      ? "bg-periwinkle"
+      ? "bg-[#e2eee7] text-[#356348] border-[#c5ddce]"
       : type === "update"
-      ? "bg-babyBlue"
-      : "bg-red-400";
+      ? "bg-[#e8f0f4] text-[#486b7b] border-[#cedfe7]"
+      : "bg-[#fbe8e6] text-[#a64c47] border-[#f1c9c5]";
 
   const [open, setOpen] = useState(false);
 
@@ -54,20 +54,22 @@ const FormModel = ({ table, type, data, id }: FormModelProps) => {
 
   return (
     <>
-      <div
-        className={`${bgColor} p-2 rounded-full cursor-pointer hover:bg-deepSky`}
+      <button
+        type="button"
+        aria-label={`${type} ${table}`}
+        className={`${buttonStyle} flex h-8 w-8 items-center justify-center rounded-lg border transition-colors hover:brightness-95`}
         onClick={() => setOpen(true)}
       >
         {<Icon className="w-5 h-5" />}
-      </div>
+      </button>
       {open && (
-        <div className="w-screen h-screen  flex justify-center items-center absolute inset-0 bg-black bg-opacity-50 z-50">
-          <div className="bg-lavendar overflow-x-hidden  text-black rounded-md relative w-[90%] md:w-[75%] lg:w-[60%] xl:w-[50%] 2xl:w-[45%] p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#17212b]/45 p-4 backdrop-blur-[2px]">
+          <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-[24px] border border-slate-200 bg-white p-6 text-slate-800 shadow-[0_24px_80px_rgba(23,33,43,0.2)]">
             <div
-              className="absolute right-2 top-2 p-2  bg-periwinkle    hover:bg-deepSky rounded-full cursor-pointer"
+              className="absolute right-4 top-4 flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
               onClick={() => setOpen(false)}
             >
-              <X />
+              <X className="h-4 w-4" />
             </div>
             <div className="mt-8 h-full">
               <Form />

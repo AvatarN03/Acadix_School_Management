@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { ArrowUpRight, BarChart3, CalendarDays, CheckCircle2, ClipboardList, Clock3, Megaphone, Users } from "lucide-react";
 import { role } from "@/lib/data";
+import CountChart from "@/components/CountChart";
+import AttendanceChart from "@/components/AttendanceChart";
+import FinanceChart from "@/components/FinanceChart";
+import EventCalendar from "@/components/EventCalendar";
+import Announcement from "@/components/Announcement";
 
 const roleCopy = {
   admin: { label: "Administrator", greeting: "Good morning, John.", description: "Here is the shape of your school today." },
@@ -13,6 +18,7 @@ const activity = [
   ["Attendance", "84% present today", "bg-[#e3f0e9]", CheckCircle2],
   ["Assignments", "8 awaiting review", "bg-[#edf1f6]", ClipboardList],
   ["Announcements", "3 new updates", "bg-[#f5eee2]", Megaphone],
+  ["Results", "12 recently published", "bg-[#eeeaf5]", BarChart3],
 ] as const;
 
 export default function DashboardHome() {
@@ -26,8 +32,19 @@ export default function DashboardHome() {
 
     <section className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
       <div className="rounded-[26px] bg-[#f0e9dc] p-7 sm:p-9"><div className="flex items-center justify-between"><CalendarDays className="h-5 w-5 text-[#8a7151]" /><span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#967e61]">Today</span></div><h2 className="mt-16 text-3xl font-semibold leading-[1.02] tracking-[-0.055em]">Keep the day moving.</h2><div className="mt-6 flex items-center gap-3 text-sm text-[#7d6c56]"><Clock3 className="h-4 w-4" /> 6 lessons on the calendar</div><Link href="/list/lessons" className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-[#806b50]">Open schedule <ArrowUpRight className="h-4 w-4" /></Link></div>
-      <div className="rounded-[26px] bg-white p-7 shadow-[0_14px_45px_rgba(31,48,61,0.05)] sm:p-9"><div className="flex items-end justify-between"><div><p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8a98a3]">Your workspace</p><h2 className="mt-2 text-2xl font-semibold tracking-[-0.045em]">What needs your attention.</h2></div><Users className="h-5 w-5 text-[#82919a]" /></div><div className="mt-7 grid gap-3 sm:grid-cols-3">{activity.map(([title, detail, tone, Icon]) => <Link key={title} href={title === "Attendance" ? "/list/attendance" : title === "Assignments" ? "/list/assignments" : "/list/announcements"} className={`group rounded-2xl p-4 transition-transform hover:-translate-y-0.5 ${tone}`}><Icon className="h-5 w-5 text-[#61727c]" /><p className="mt-8 text-sm font-semibold text-[#263640]">{title}</p><p className="mt-1 text-xs leading-5 text-[#71808a]">{detail}</p></Link>)}</div></div>
+      <div className="rounded-[26px] border border-[#e1e7ea] bg-white p-7 shadow-[0_10px_30px_rgba(31,48,61,0.05)] sm:p-9"><div className="flex items-end justify-between"><div><p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8a98a3]">Your workspace</p><h2 className="mt-2 text-2xl font-semibold tracking-[-0.045em]">What needs your attention.</h2></div><Users className="h-5 w-5 text-[#82919a]" /></div><div className="mt-7 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">{activity.map(([title, detail, tone, Icon]) => <Link key={title} href={title === "Attendance" ? "/list/attendance" : title === "Assignments" ? "/list/assignments" : title === "Results" ? "/list/results" : "/list/announcements"} className={`group min-h-[132px] rounded-2xl border border-white/70 p-4 transition-transform hover:-translate-y-0.5 ${tone}`}><Icon className="h-5 w-5 text-[#61727c]" /><p className="mt-8 text-sm font-semibold text-[#263640]">{title}</p><p className="mt-1 text-xs leading-5 text-[#71808a]">{detail}</p></Link>)}</div></div>
     </section>
+
+    <section className="grid gap-4 xl:grid-cols-[0.85fr_1.15fr]">
+      <div className="h-[420px] min-h-0 overflow-hidden rounded-[26px] border border-[#e1e7ea] bg-white p-4 shadow-[0_10px_30px_rgba(31,48,61,0.05)] sm:p-5"><div className="mb-3 flex items-center justify-between"><div><p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8a98a3]">Student mix</p><h2 className="mt-1 text-lg font-semibold tracking-[-0.04em] text-[#263640]">Gender ratio</h2></div><Link href="/list/students" className="text-xs font-semibold text-[#66808e]">View students</Link></div><div className="h-[340px] min-h-0"><CountChart /></div></div>
+      <div className="h-[420px] min-h-0 overflow-hidden rounded-[26px] border border-[#e1e7ea] bg-white p-4 shadow-[0_10px_30px_rgba(31,48,61,0.05)] sm:p-5"><div className="mb-3 flex items-center justify-between"><div><p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8a98a3]">Weekly activity</p><h2 className="mt-1 text-lg font-semibold tracking-[-0.04em] text-[#263640]">Attendance overview</h2></div><Link href="/list/attendance" className="text-xs font-semibold text-[#66808e]">View attendance</Link></div><div className="h-[340px] min-h-0"><AttendanceChart /></div></div>
+    </section>
+
+    <section className="h-[420px] min-h-0 overflow-hidden rounded-[26px] border border-[#e1e7ea] bg-white p-4 shadow-[0_10px_30px_rgba(31,48,61,0.05)] sm:p-5"><div className="mb-3 flex items-center justify-between"><div><p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8a98a3]">Financial overview</p><h2 className="mt-1 text-lg font-semibold tracking-[-0.04em] text-[#263640]">Income and expenses</h2></div><Link href="/list/results" className="text-xs font-semibold text-[#66808e]">Review records</Link></div><div className="h-[340px] min-h-0"><FinanceChart /></div></section>
+
+    <section className="rounded-[26px] border border-[#e1e7ea] bg-white p-5 shadow-[0_10px_30px_rgba(31,48,61,0.05)] sm:p-6"><Announcement /></section>
+
+    <section className="rounded-[26px] border border-[#e1e7ea] bg-white p-5 shadow-[0_10px_30px_rgba(31,48,61,0.05)] sm:p-6"><EventCalendar /></section>
 
     <section className="flex flex-col gap-4 rounded-[26px] border border-[#dfe6e9] bg-[#f8fafb] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-7"><div><p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#82919a]">Quick access</p><p className="mt-2 text-sm text-[#5f6e77]">Jump back into the parts of Acadix you use most.</p></div><div className="flex flex-wrap gap-2"><Link href="/list/events" className="rounded-full border border-[#d8e1e5] bg-white px-4 py-2 text-xs font-semibold text-[#53636c] transition-colors hover:border-[#b7c9d1] hover:text-[#17212b]">Events</Link><Link href="/list/results" className="rounded-full border border-[#d8e1e5] bg-white px-4 py-2 text-xs font-semibold text-[#53636c] transition-colors hover:border-[#b7c9d1] hover:text-[#17212b]">Results</Link><Link href="/list/messages" className="rounded-full border border-[#d8e1e5] bg-white px-4 py-2 text-xs font-semibold text-[#53636c] transition-colors hover:border-[#b7c9d1] hover:text-[#17212b]">Messages</Link></div></section>
   </div>;
