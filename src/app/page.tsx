@@ -1,28 +1,30 @@
-import { Loader } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight, BarChart3, CalendarDays, Check, LayoutGrid } from "lucide-react";
 
-const Homepage = () => {
-  return (
-    <div className="w-screen h-screen relative flex justify-center items-center flex-col">
-      <div className="absolute inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]" />
-      <h1 className="text-3xl text-center md:text-6xl font-semibolds my-8">Acadix - Management Platform</h1>
-      <p className="flex items-center justify-center gap-2">
-        Development in progress{" "}
-        <span>
-          <Loader className="animate-spin block" />
-        </span>
-      </p>
-      <div className="mt-12 text-center">
-        <h1>Links to the role based Page</h1>
-        <div className="flex justify-between items-center flex-wrap my-8 gap-4">
-          <Link className="bg-periwinkle text-babyBlue hover:text-dodgerBlue hover:bg-lavendar p-2 rounded-md" href={"/admin"}>Admin</Link>
-          <Link className="bg-periwinkle text-babyBlue hover:text-dodgerBlue hover:bg-lavendar p-2 rounded-md" href={"/student"}>Student</Link>
-          <Link className="bg-periwinkle text-babyBlue hover:text-dodgerBlue hover:bg-lavendar p-2 rounded-md" href={"/teacher"}>Teacher</Link>
-          <Link className="bg-periwinkle text-babyBlue hover:text-dodgerBlue hover:bg-lavendar p-2 rounded-md" href={"/parent"}>Parents</Link>
-        </div>
-      </div>
+const roleLinks = [["Admin", "/admin"], ["Teacher", "/teacher"], ["Student", "/student"], ["Parent", "/parent"]];
+const modules = ["Teachers", "Students", "Parents", "Subjects", "Classes", "Lessons", "Exams", "Assignments", "Results", "Attendance", "Events", "Announcements"];
+
+export default function Homepage() {
+  return <main className="min-h-screen overflow-hidden bg-[#f5f7fa] text-[#16202b]">
+    <div className="mx-auto max-w-7xl px-5 py-5 sm:px-8 sm:py-8 lg:px-10">
+      <header className="flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3"><span className="flex h-10 w-10 items-center justify-center rounded-[13px] bg-[#17212b] shadow-[0_8px_20px_rgba(23,33,43,0.16)]"><Image src="/logo.png" alt="" width={24} height={24} className="brightness-0 invert" /></span><span className="text-[17px] font-semibold tracking-[-0.03em]">Acadix</span></Link>
+        <nav className="flex items-center gap-3 sm:gap-5" aria-label="Role shortcuts"><div className="hidden items-center gap-4 text-xs font-medium text-[#7a8791] sm:flex">{roleLinks.map(([label, href]) => <Link key={href} href={href} className="transition-colors hover:text-[#17212b]">{label}</Link>)}</div><span className="hidden h-4 w-px bg-[#d5dce1] sm:block" /><Link href="/sign-in" className="group inline-flex items-center gap-2 text-sm font-semibold text-[#51606d] transition-colors hover:text-[#17212b]">Sign in <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></Link></nav>
+      </header>
+
+      <section className="mt-8 grid gap-4 lg:grid-cols-[1.45fr_0.55fr]">
+        <div className="relative min-h-[430px] overflow-hidden rounded-[28px] bg-[#17212b] p-7 text-white sm:p-11"><div className="absolute -right-16 -top-20 h-72 w-72 rounded-full border-[38px] border-[#34495a]/60" /><div className="absolute bottom-[-100px] right-24 h-64 w-64 rounded-full border border-[#6f8799]/25" /><div className="relative flex h-full max-w-[650px] flex-col justify-between"><div><p className="mb-7 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#a8c0d2]"><span className="h-1.5 w-1.5 rounded-full bg-[#9fd6bc]" /> School operations, in one view</p><h1 className="max-w-[600px] text-[clamp(2.6rem,6vw,5.25rem)] font-semibold leading-[0.94] tracking-[-0.07em]">A calmer way to run your school.</h1><p className="mt-7 max-w-[480px] text-[15px] leading-7 text-[#bdc9d2]">Acadix brings the people, schedules, and academic work of your institution into one clear workspace.</p></div><div className="mt-12 flex flex-wrap items-center gap-3"><Link href="/admin" className="inline-flex items-center gap-3 rounded-full bg-[#e7f1eb] px-5 py-3 text-sm font-semibold text-[#17212b] transition-transform hover:-translate-y-0.5">Explore the workspace <ArrowUpRight className="h-4 w-4" /></Link><span className="text-xs text-[#9eacb7]">Four tailored portals</span></div></div></div>
+        <div className="flex min-h-[430px] flex-col justify-between rounded-[28px] bg-[#dce9f1] p-7 sm:p-9"><div className="flex items-start justify-between"><span className="rounded-full bg-white/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#4f6878]">At a glance</span><BarChart3 className="h-5 w-5 text-[#597484]" /></div><div><p className="text-[76px] font-semibold leading-none tracking-[-0.08em] text-[#17212b]">12</p><h2 className="mt-3 text-xl font-semibold tracking-[-0.03em]">Connected modules</h2><p className="mt-2 max-w-[230px] text-sm leading-6 text-[#607584]">Everything from attendance to announcements, ready when your team needs it.</p></div><div className="flex items-center gap-2 border-t border-[#b9d0dc] pt-5 text-xs font-medium text-[#607584]"><LayoutGrid className="h-4 w-4" /> One shared source of truth</div></div>
+      </section>
+
+      <section className="mt-4 grid gap-4 lg:grid-cols-[0.72fr_1.28fr]">
+        <div className="rounded-[28px] bg-[#f0e9dc] p-7 sm:p-9"><div className="flex items-center justify-between"><CalendarDays className="h-5 w-5 text-[#8a7151]" /><span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#967e61]">Built for rhythm</span></div><h2 className="mt-20 max-w-[280px] text-3xl font-semibold leading-[1.02] tracking-[-0.055em]">The right detail, at the right time.</h2><p className="mt-4 max-w-[300px] text-sm leading-6 text-[#7d6c56]">Give every person a focused starting point without losing the bigger picture.</p></div>
+        <div className="rounded-[28px] bg-white p-7 shadow-[0_14px_45px_rgba(31,48,61,0.05)] sm:p-9"><p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8a98a3]">One connected workspace</p><h2 className="mt-2 max-w-[540px] text-2xl font-semibold tracking-[-0.045em]">Less time finding information. More time supporting learning.</h2><p className="mt-4 max-w-[600px] text-sm leading-6 text-[#71808a]">From class schedules and assignments to attendance, results, events, and announcements, Acadix gives each part of your school a clear place to work.</p><div className="mt-8 grid gap-3 sm:grid-cols-3"><div className="rounded-2xl bg-[#f1f6f8] p-4"><p className="text-2xl font-semibold tracking-[-0.05em] text-[#17212b]">04</p><p className="mt-1 text-xs leading-5 text-[#71808a]">Role-based portals</p></div><div className="rounded-2xl bg-[#f5f1e9] p-4"><p className="text-2xl font-semibold tracking-[-0.05em] text-[#17212b]">12</p><p className="mt-1 text-xs leading-5 text-[#71808a]">Core modules</p></div><div className="rounded-2xl bg-[#edf3ed] p-4"><p className="text-2xl font-semibold tracking-[-0.05em] text-[#17212b]">01</p><p className="mt-1 text-xs leading-5 text-[#71808a]">Shared system</p></div></div></div>
+      </section>
+
+      <section className="mt-4 flex flex-col gap-5 rounded-[28px] bg-[#e5eee8] p-7 sm:p-9 lg:flex-row lg:items-center lg:justify-between"><div><p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#658171]">Everything stays connected</p><h2 className="mt-2 text-2xl font-semibold tracking-[-0.045em]">A simple front door to the whole system.</h2></div><div className="flex flex-wrap gap-x-5 gap-y-3 text-xs font-medium text-[#5d7467]">{modules.map((module) => <span key={module} className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-[#6b9a7c]" />{module}</span>)}</div></section>
+      <footer className="flex flex-col gap-3 px-1 py-7 text-xs text-[#8b98a2] sm:flex-row sm:items-center sm:justify-between"><span>Acadix · School management, made clearer.</span><span>Next.js · Tailwind CSS</span></footer>
     </div>
-  );
-};
-
-export default Homepage;
+  </main>;
+}
