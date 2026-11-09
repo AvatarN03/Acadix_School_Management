@@ -1,10 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, BarChart3, CalendarDays, Check, LayoutGrid } from "lucide-react";
+import { ArrowUpRight, BarChart3, CalendarDays, LayoutGrid } from "lucide-react";
 
 const roleLinks = [["Admin", "/admin"], ["Teacher", "/teacher"], ["Student", "/student"], ["Parent", "/parent"]];
-const modules = ["Teachers", "Students", "Parents", "Subjects", "Classes", "Lessons", "Exams", "Assignments", "Results", "Attendance", "Events", "Announcements"];
-
 export default function Homepage() {
   return <main className="min-h-screen overflow-hidden bg-[#f5f7fa] text-[#16202b]">
     <div className="mx-auto max-w-7xl px-5 py-5 sm:px-8 sm:py-8 lg:px-10">
@@ -23,8 +21,8 @@ export default function Homepage() {
         <div className="rounded-[28px] bg-white p-7 shadow-[0_14px_45px_rgba(31,48,61,0.05)] sm:p-9"><p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8a98a3]">One connected workspace</p><h2 className="mt-2 max-w-[540px] text-2xl font-semibold tracking-[-0.045em]">Less time finding information. More time supporting learning.</h2><p className="mt-4 max-w-[600px] text-sm leading-6 text-[#71808a]">From class schedules and assignments to attendance, results, events, and announcements, Acadix gives each part of your school a clear place to work.</p><div className="mt-8 grid gap-3 sm:grid-cols-3"><div className="rounded-2xl bg-[#f1f6f8] p-4"><p className="text-2xl font-semibold tracking-[-0.05em] text-[#17212b]">04</p><p className="mt-1 text-xs leading-5 text-[#71808a]">Role-based portals</p></div><div className="rounded-2xl bg-[#f5f1e9] p-4"><p className="text-2xl font-semibold tracking-[-0.05em] text-[#17212b]">12</p><p className="mt-1 text-xs leading-5 text-[#71808a]">Core modules</p></div><div className="rounded-2xl bg-[#edf3ed] p-4"><p className="text-2xl font-semibold tracking-[-0.05em] text-[#17212b]">01</p><p className="mt-1 text-xs leading-5 text-[#71808a]">Shared system</p></div></div></div>
       </section>
 
-      <section className="mt-4 flex flex-col gap-5 rounded-[28px] bg-[#e5eee8] p-7 sm:p-9 lg:flex-row lg:items-center lg:justify-between"><div><p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#658171]">Everything stays connected</p><h2 className="mt-2 text-2xl font-semibold tracking-[-0.045em]">A simple front door to the whole system.</h2></div><div className="flex flex-wrap gap-x-5 gap-y-3 text-xs font-medium text-[#5d7467]">{modules.map((module) => <span key={module} className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-[#6b9a7c]" />{module}</span>)}</div></section>
-      <footer className="flex flex-col gap-3 px-1 py-7 text-xs text-[#8b98a2] sm:flex-row sm:items-center sm:justify-between"><span>Acadix · School management, made clearer.</span><span>Next.js · Tailwind CSS</span></footer>
+      <section className="mt-4 rounded-[28px] bg-[#e5eee8] p-7 sm:p-9"><div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between"><div><p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#658171]">Everything stays connected</p><h2 className="mt-2 text-2xl font-semibold tracking-[-0.045em]">A simple front door to the whole system.</h2></div><p className="max-w-[430px] text-sm leading-6 text-[#587064]">Keep daily school work clear, consistent, and easy to pick up—from the first timetable of the day to the latest announcement.</p></div></section>
+      <footer className="flex flex-col gap-4 border-t border-[#dce2e5] px-1 py-7 text-sm text-[#64727c] sm:flex-row sm:items-center sm:justify-between"><Link href="/" className="flex items-center gap-2.5 font-semibold text-[#34434e]"><span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-[#17212b]"><Image src="/logo.png" alt="" width={19} height={19} className="brightness-0 invert" /></span><span>Acadix</span></Link><span className="text-xs text-[#71808a]">School management, made clearer.</span></footer>
     </div>
   </main>;
 }
