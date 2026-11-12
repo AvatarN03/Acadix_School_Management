@@ -30,11 +30,11 @@ export const role: DashboardRole = "admin";
 
 export const menuItems: MenuItemProps[] = [
   {
-    title: "OVERVIEW",
+    title: "",
     items: [
       {
         icon: Home,
-        label: "Home",
+        label: "Overview",
         href: "/dashboard",
         visible: ["admin", "teacher", "student", "parent"],
       },

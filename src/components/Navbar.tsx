@@ -8,13 +8,6 @@ const Navbar = () => {
     <header className="flex items-center justify-between rounded-[24px] border border-[#e1e7ea] bg-white px-3 py-2.5 shadow-[0_10px_30px_rgba(31,48,61,0.04)] sticky top-0 z-30 md:px-4">
       <div className="flex min-w-0 items-center gap-3">
         <MobileMenu />
-        <div className="hidden items-center gap-2 sm:flex">
-          <span className="h-2 w-2 rounded-full bg-[#9fd6bc]" />
-          <div className="hidden lg:block">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#9aa7ad]">Acadix</p>
-            <p className="text-xs font-semibold text-[#34434e]">School overview</p>
-          </div>
-        </div>
         <SearchInput smScreen={false} />
       </div>
 

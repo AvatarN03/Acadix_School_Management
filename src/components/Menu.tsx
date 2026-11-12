@@ -11,9 +11,11 @@ const Menu = ({ showLabels = false }: { showLabels?: boolean }) => {
     <nav className="text-xs space-y-5">
       {menuItems.map((section, index) => (
         <div key={index} className="space-y-1">
+          {section.title && (
             <span className={`${showLabels ? "block" : "hidden lg:block"} text-[10px] font-semibold uppercase tracking-[0.16em] text-[#9aa7ad] px-3 py-1`}>
-            {section.title}
-          </span>
+              {section.title}
+            </span>
+          )}
 
           <div className="space-y-1">
             {section.items.map((item, idx) => {
