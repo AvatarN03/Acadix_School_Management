@@ -155,19 +155,19 @@ export const menuItems: MenuItemProps[] = [
 export const announcements:AnnouncementDataProps[] = [
   {
     title: "Annual Sports Day Celebration Event",
-    date: "15-01-2025",
+    date: "10-11-2026",
     para:
       "The school will be hosting its Annual Sports Day to encourage physical fitness and teamwork among students. All students are requested to participate actively and be present on time."
   },
   {
     title: "Parent Teacher Meeting Important Notice",
-    date: "20-01-2025",
+    date: "06-11-2026",
     para:
       "A Parent Teacher Meeting has been scheduled to discuss academic progress and overall development of students. Parents are requested to attend and cooperate with the teaching staff."
   },
   {
     title: "Second Term Examination Schedule Announcement",
-    date: "05-02-2025",
+    date: "02-11-2026",
     para:
       "The examination schedule for the second term has been released. Students are advised to check the timetable carefully and prepare accordingly for their upcoming exams."
   }
@@ -594,7 +594,7 @@ export const classesData = [
     supervisor: "Iva Frank",
   },
   {
-    id: 5,
+    id: 6,
     name: "5B",
     capacity: 20,
     grade: 5,
@@ -947,7 +947,7 @@ export const eventsData = [
     id: 1,
     title: "Lake Trip",
     class: "1A",
-    date: "2025-01-01",
+    date: "2026-11-13",
     startTime: "10:00",
     endTime: "11:00",
   },
@@ -955,47 +955,47 @@ export const eventsData = [
     id: 2,
     title: "Picnic",
     class: "2A",
-    date: "2025-01-01",
-    startTime: "10:00",
-    endTime: "11:00",
+    date: "2026-11-17",
+    startTime: "09:00",
+    endTime: "10:30",
   },
   {
     id: 3,
     title: "Beach Trip",
     class: "3A",
-    date: "2025-01-01",
-    startTime: "10:00",
-    endTime: "11:00",
+    date: "2026-11-20",
+    startTime: "13:00",
+    endTime: "14:00",
   },
   {
     id: 4,
     title: "Museum Trip",
     class: "4A",
-    date: "2025-01-01",
+    date: "2026-11-24",
     startTime: "10:00",
-    endTime: "11:00",
+    endTime: "12:00",
   },
   {
     id: 5,
     title: "Music Concert",
     class: "5A",
-    date: "2025-01-01",
-    startTime: "10:00",
-    endTime: "11:00",
+    date: "2026-11-27",
+    startTime: "18:00",
+    endTime: "19:30",
   },
   {
     id: 6,
     title: "Magician Show",
     class: "1B",
-    date: "2025-01-01",
-    startTime: "10:00",
-    endTime: "11:00",
+    date: "2026-12-01",
+    startTime: "11:00",
+    endTime: "12:00",
   },
   {
     id: 7,
     title: "Lake Trip",
     class: "2B",
-    date: "2025-01-01",
+    date: "2026-12-04",
     startTime: "10:00",
     endTime: "11:00",
   },
@@ -1003,25 +1003,25 @@ export const eventsData = [
     id: 8,
     title: "Cycling Race",
     class: "3B",
-    date: "2025-01-01",
-    startTime: "10:00",
-    endTime: "11:00",
+    date: "2026-12-08",
+    startTime: "08:00",
+    endTime: "10:00",
   },
   {
     id: 9,
     title: "Art Exhibition",
     class: "4B",
-    date: "2025-01-01",
-    startTime: "10:00",
-    endTime: "11:00",
+    date: "2026-12-11",
+    startTime: "15:00",
+    endTime: "17:00",
   },
   {
     id: 10,
     title: "Sports Tournament",
     class: "5B",
-    date: "2025-01-01",
-    startTime: "10:00",
-    endTime: "11:00",
+    date: "2026-12-15",
+    startTime: "09:00",
+    endTime: "12:00",
   },
 ];
 
@@ -1221,59 +1221,63 @@ export const TeacherProfile: TeacherProfileProp = {
   },
 };
 
+// Fills intentionally match the palette used by the dashboard charts
+// (slate blue for boys, warm bronze for girls, light track for the total).
 export const AdminStudentdata = [
   {
     name: "Total",
     value: 106,
-    fill: "#508FE2",
+    fill: "#F1F5F9",
   },
   {
     name: "Boys",
     value: 48,
-    fill: "#62BFED", 
+    fill: "#567b8d",
   },
   {
     name: "Girls",
-    value: 65,
-    fill: "#0B63C1", // accent gold
+    value: 58,
+    fill: "#b58b66",
   },
 ];
 
+// Values are school-wide daily headcounts so the derived weekly
+// attendance rate (see lib/dashboard-metrics.ts) stays realistic (~89%).
 export const AdminAttendenceData = [
   {
     name: "Mon",
-    present: 40,
-    absent: 24,
+    present: 128,
+    absent: 12,
   },
   {
     name: "Tue",
-    present: 30,
-    absent: 13,
+    present: 122,
+    absent: 14,
   },
   {
     name: "Wed",
-    present: 20,
-    absent: 78,
+    present: 96,
+    absent: 18,
   },
   {
     name: "Thu",
-    present: 27,
-    absent: 39,
+    present: 118,
+    absent: 10,
   },
   {
     name: "Fri",
-    present: 18,
-    absent: 48,
+    present: 92,
+    absent: 16,
   },
   {
     name: "Sat",
-    present: 23,
-    absent: 38,
+    present: 74,
+    absent: 9,
   },
   {
     name: "Sun",
-    present: 34,
-    absent: 43,
+    present: 61,
+    absent: 7,
   },
 ];
 
@@ -1289,27 +1293,6 @@ export const AdminFinanceData = [
   { name: "Oct", income: 7300, expense: 3900 },
   { name: "Nov", income: 6400, expense: 4500 },
   { name: "Dec", income: 8200, expense: 5100 },
-];
-
-export const events = [
-  {
-    id: 1,
-    title: "Lorem ipsum dolor",
-    time: "12:00 PM - 2:00 PM",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  {
-    id: 2,
-    title: "Lorem ipsum dolor",
-    time: "12:00 PM - 2:00 PM",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  {
-    id: 3,
-    title: "Lorem ipsum dolor",
-    time: "12:00 PM - 2:00 PM",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
 ];
 
 export const TeacherColumns = [

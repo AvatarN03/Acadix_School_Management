@@ -1,27 +1,33 @@
 "use client";
 
 import Image from "next/image";
-import { MoreHorizontal } from "lucide-react";
 import { RadialBarChart, RadialBar, ResponsiveContainer } from "recharts";
 
-const data = [
-  { name: "Total", value: 106, fill: "#F1F5F9" },
-  { name: "Girls", value: 48, fill: "#b58b66" },
-  { name: "Boys", value: 58, fill: "#567b8d" },
-];
+import { AdminStudentdata } from "@/lib/data";
+import type { GenderSlice } from "@/lib/dashboard-metrics";
 
-const CountChart = () => {
+type CountChartProps = {
+  /** Gender slices (Total / Boys / Girls). Defaults to the static dataset. */
+  data?: GenderSlice[];
+};
+
+// All figures below the chart are derived from `data` — no hardcoded totals,
+// so the card stays consistent once dynamic data is passed in.
+const CountChart = ({ data = AdminStudentdata }: CountChartProps) => {
+  const slice = (name: string) => data.find((item) => item.name === name)?.value ?? 0;
+
+  const total = slice("Total");
+  const boys = slice("Boys");
+  const girls = slice("Girls");
+
+  const share = (value: number) =>
+    total ? `${Math.round((value / total) * 100)}%` : "0%";
+
+  const boysFill = data.find((item) => item.name === "Boys")?.fill ?? "#567b8d";
+  const girlsFill = data.find((item) => item.name === "Girls")?.fill ?? "#b58b66";
+
   return (
     <div className="w-full h-full min-h-0 flex flex-col justify-between">
-      {/* Title */}
-      <div className="flex justify-between items-center pb-2 border-b border-slate-100">
-        <div>
-          <h2 className="text-sm font-bold text-slate-900">Students Gender Ratio</h2>
-          <span className="text-[11px] text-slate-400">Total Enrollment: 2,263</span>
-        </div>
-        <MoreHorizontal className="w-4 h-4 text-slate-400 cursor-pointer hover:text-slate-600" />
-      </div>
-
       {/* Chart */}
       <div className="w-full h-52 min-h-0 relative my-2">
         <ResponsiveContainer width="100%" height="100%">
@@ -47,22 +53,22 @@ const CountChart = () => {
 
       {/* Legend & Stats */}
       <div className="grid grid-cols-2 gap-3 pt-3 border-t border-slate-100 text-center">
-          <div className="p-2 rounded-xl bg-[#edf4f6] border border-[#d9e6ea]">
+        <div className="p-2 rounded-xl bg-[#edf4f6] border border-[#d9e6ea]">
           <div className="flex items-center justify-center gap-1.5 mb-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#567b8d]" />
+            <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: boysFill }} />
             <span className="text-xs font-semibold text-slate-600">Boys</span>
           </div>
-          <p className="text-base font-extrabold text-slate-900">1,245</p>
-          <span className="text-[10px] text-slate-400 font-medium">55% of Total</span>
+          <p className="text-base font-extrabold text-slate-900">{boys}</p>
+          <span className="text-[10px] text-slate-400 font-medium">{share(boys)} of Total</span>
         </div>
 
         <div className="p-2 rounded-xl bg-[#f5eee6] border border-[#eadccc]">
           <div className="flex items-center justify-center gap-1.5 mb-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#b58b66]" />
+            <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: girlsFill }} />
             <span className="text-xs font-semibold text-slate-600">Girls</span>
           </div>
-          <p className="text-base font-extrabold text-slate-900">1,018</p>
-          <span className="text-[10px] text-slate-400 font-medium">45% of Total</span>
+          <p className="text-base font-extrabold text-slate-900">{girls}</p>
+          <span className="text-[10px] text-slate-400 font-medium">{share(girls)} of Total</span>
         </div>
       </div>
     </div>

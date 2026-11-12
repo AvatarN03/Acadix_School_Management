@@ -6,7 +6,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 import { Value } from "../../types";
-import { events } from "@/lib/data";
+import { upcomingEvents } from "@/lib/dashboard-metrics";
 
 const EventCalendar = () => {
   const [value, onChange] = useState<Value>(new Date());
@@ -33,14 +33,15 @@ const EventCalendar = () => {
           Upcoming Events
         </h3>
         <span className="text-[10px] font-semibold text-[#587064] bg-[#e5eee8] px-2 py-0.5 rounded-full border border-[#cfe0d4]">
-          {events.length} Scheduled
+          {upcomingEvents.length} Scheduled
         </span>
       </div>
 
       {/* Events Items */}
       <div className="space-y-2.5">
-        {events.map((event, idx) => {
-          const borderClass = idx === 0 ? "border-l-[#6b9a7c]" : idx === 1 ? "border-l-[#567b8d]" : "border-l-[#b58b66]";
+        {upcomingEvents.map((event, idx) => {
+          const borderClass =
+            idx % 3 === 0 ? "border-l-[#6b9a7c]" : idx % 3 === 1 ? "border-l-[#567b8d]" : "border-l-[#b58b66]";
 
           return (
             <div
@@ -54,8 +55,9 @@ const EventCalendar = () => {
                   {event.time}
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 mt-1 leading-relaxed line-clamp-2">
-                {event.description}
+              <p className="text-[11px] text-slate-500 mt-1 flex items-center gap-1.5">
+                <CalendarIcon className="w-3 h-3 text-slate-400 flex-shrink-0" />
+                {event.dateLabel} · Class {event.className}
               </p>
             </div>
           );
