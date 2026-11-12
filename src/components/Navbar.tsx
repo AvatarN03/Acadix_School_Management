@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Bell, ChevronDown, MessageSquare } from "lucide-react";
+import { announcements } from "@/lib/data";
 import SearchInput from "./SearchInput";
 import MobileMenu from "./MobileMenu";
 
@@ -30,7 +31,7 @@ const Navbar = () => {
         >
           <Bell className="w-4 h-4" />
           <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-blue-600 text-white text-[10px] font-bold flex items-center justify-center">
-            2
+            {announcements.length}
           </span>
         </button>
 

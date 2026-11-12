@@ -2,9 +2,8 @@ import Link from "next/link";
 import {
   ArrowUpRight,
   BarChart3,
-  CheckCircle2,
-  ClipboardList,
   Clock3,
+  FileEdit,
   Megaphone,
 } from "lucide-react";
 import { DashboardRole, role } from "@/lib/data";
@@ -52,20 +51,15 @@ const roleCopy: Record<DashboardRole, { label: string; name: string | null; desc
 
 // Counts come from lib/dashboard-metrics.ts — the single seam that becomes
 // dynamic once real data is wired in.
+// One home per fact: attendance is stated only in the hero pulse (and shown
+// visually in the weekly chart), so the workspace covers the other queues.
 const attentionTiles = [
   {
-    title: "Attendance",
-    detail: `${attentionCounts.attendanceRate}% present this week`,
-    href: "/list/attendance",
+    title: "Results",
+    detail: `${attentionCounts.results} published`,
+    href: "/list/results",
     tone: "bg-[#e3f0e9]",
-    Icon: CheckCircle2,
-  },
-  {
-    title: "Assignments",
-    detail: `${attentionCounts.assignments} awaiting review`,
-    href: "/list/assignments",
-    tone: "bg-[#edf1f6]",
-    Icon: ClipboardList,
+    Icon: BarChart3,
   },
   {
     title: "Announcements",
@@ -75,11 +69,11 @@ const attentionTiles = [
     Icon: Megaphone,
   },
   {
-    title: "Results",
-    detail: `${attentionCounts.results} recently published`,
-    href: "/list/results",
-    tone: "bg-[#eeeaf5]",
-    Icon: BarChart3,
+    title: "Exams",
+    detail: `${attentionCounts.exams} scheduled`,
+    href: "/list/exams",
+    tone: "bg-[#edf1f6]",
+    Icon: FileEdit,
   },
 ] as const;
 
@@ -118,14 +112,14 @@ export default function DashboardHome() {
 
     {/* Today + workspace */}
     <section className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
-      <div className="rounded-[26px] bg-[#f0e9dc] p-7 sm:p-9"><div className="flex items-center justify-between"><Clock3 className="h-5 w-5 text-[#8a7151]" /><span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#967e61]">Today</span></div><h2 className="mt-16 text-3xl font-semibold leading-[1.02] tracking-[-0.055em]">Keep the day moving.</h2><div className="mt-6 flex items-center gap-3 text-sm text-[#7d6c56]"><Clock3 className="h-4 w-4" /> {scheduleMeta.lessonsOnCalendar} lessons on the calendar</div><Link href="/list/lessons" className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-[#806b50]">Open schedule <ArrowUpRight className="h-4 w-4" /></Link></div>
-      <div className="rounded-[26px] border border-[#e1e7ea] bg-white p-7 shadow-[0_10px_30px_rgba(31,48,61,0.05)] sm:p-9"><div className="flex items-end justify-between"><div><p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8a98a3]">Your workspace</p><h2 className="mt-2 text-2xl font-semibold tracking-[-0.045em]">What needs your attention.</h2></div></div><div className="mt-7 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">{attentionTiles.map(({ title, detail, href, tone, Icon }) => <Link key={title} href={href} className={`group min-h-[132px] rounded-2xl border border-white/70 p-4 transition-transform hover:-translate-y-0.5 ${tone}`}><Icon className="h-5 w-5 text-[#61727c]" /><p className="mt-8 text-sm font-semibold text-[#263640]">{title}</p><p className="mt-1 text-xs leading-5 text-[#71808a]">{detail}</p></Link>)}</div></div>
+      <div className="rounded-[26px] bg-[#f0e9dc] p-7 sm:p-9"><div className="flex items-center justify-between"><Clock3 className="h-5 w-5 text-[#8a7151]" /><span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#967e61]">Schedule</span></div><h2 className="mt-16 text-3xl font-semibold leading-[1.02] tracking-[-0.055em]">Keep the day moving.</h2><div className="mt-6 flex items-center gap-3 text-sm text-[#7d6c56]"><Clock3 className="h-4 w-4" /> {scheduleMeta.lessonsOnCalendar} lessons on the calendar</div><Link href="/list/lessons" className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-[#806b50]">Open schedule <ArrowUpRight className="h-4 w-4" /></Link></div>
+      <div className="rounded-[26px] border border-[#e1e7ea] bg-white p-7 shadow-[0_10px_30px_rgba(31,48,61,0.05)] sm:p-9"><div className="flex items-end justify-between"><div><p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8a98a3]">Your workspace</p><h2 className="mt-2 text-2xl font-semibold tracking-[-0.045em]">What needs your attention.</h2></div></div><div className="mt-7 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">{attentionTiles.map(({ title, detail, href, tone, Icon }) => <Link key={title} href={href} className={`group min-h-[132px] rounded-2xl border border-white/70 p-4 transition-transform hover:-translate-y-0.5 ${tone}`}><Icon className="h-5 w-5 text-[#61727c]" /><p className="mt-8 text-sm font-semibold text-[#263640]">{title}</p><p className="mt-1 text-xs leading-5 text-[#71808a]">{detail}</p></Link>)}</div></div>
     </section>
 
     {/* Charts */}
     <section className="grid gap-4 xl:grid-cols-[0.85fr_1.15fr]">
-      <div className="flex flex-col rounded-[26px] border border-[#e1e7ea] bg-white p-4 shadow-[0_10px_30px_rgba(31,48,61,0.05)] sm:p-5"><div className="mb-3 flex items-center justify-between"><div><p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8a98a3]">Student mix</p><h2 className="mt-1 text-lg font-semibold tracking-[-0.04em] text-[#263640]">Gender ratio</h2><p className="mt-0.5 text-xs text-[#8a98a3]">Total enrollment: {studentGender.total}</p></div><Link href="/list/students" className="text-xs font-semibold text-[#66808e]">View students</Link></div><div className="min-h-[350px] flex-1"><CountChart data={studentGender.chart} /></div></div>
-      <div className="flex flex-col rounded-[26px] border border-[#e1e7ea] bg-white p-4 shadow-[0_10px_30px_rgba(31,48,61,0.05)] sm:p-5"><div className="mb-3 flex items-center justify-between"><div><p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8a98a3]">Weekly activity</p><h2 className="mt-1 text-lg font-semibold tracking-[-0.04em] text-[#263640]">Attendance overview</h2><p className="mt-0.5 text-xs text-[#8a98a3]">{attendanceRate}% present this week</p></div><Link href="/list/attendance" className="text-xs font-semibold text-[#66808e]">View attendance</Link></div><div className="min-h-[320px] flex-1"><AttendanceChart data={weeklyAttendance} /></div></div>
+      <div className="flex flex-col rounded-[26px] border border-[#e1e7ea] bg-white p-4 shadow-[0_10px_30px_rgba(31,48,61,0.05)] sm:p-5"><div className="mb-3 flex items-center justify-between"><div><p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8a98a3]">Student mix</p><h2 className="mt-1 text-lg font-semibold tracking-[-0.04em] text-[#263640]">Gender ratio</h2></div><Link href="/list/students" className="text-xs font-semibold text-[#66808e]">View students</Link></div><div className="min-h-[350px] flex-1"><CountChart data={studentGender.chart} /></div></div>
+      <div className="flex flex-col rounded-[26px] border border-[#e1e7ea] bg-white p-4 shadow-[0_10px_30px_rgba(31,48,61,0.05)] sm:p-5"><div className="mb-3 flex items-center justify-between"><div><p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8a98a3]">Weekly activity</p><h2 className="mt-1 text-lg font-semibold tracking-[-0.04em] text-[#263640]">Attendance overview</h2><p className="mt-0.5 text-xs text-[#8a98a3]">Present and absent headcount by day</p></div><Link href="/list/attendance" className="text-xs font-semibold text-[#66808e]">View attendance</Link></div><div className="min-h-[320px] flex-1"><AttendanceChart data={weeklyAttendance} /></div></div>
     </section>
 
     {/* Admin-only financial overview; other roles get an academics snapshot */}

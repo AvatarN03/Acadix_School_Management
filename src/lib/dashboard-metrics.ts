@@ -14,6 +14,7 @@ import {
   calendarEvents,
   classesData,
   eventsData,
+  examsData,
   lessonsData,
   resultsData,
   subjectsData,
@@ -28,7 +29,7 @@ export type FinancePoint = { name: string; income: number; expense: number };
 
 export type KpiTile = {
   label: string;
-  value: number;
+  value: number | string;
   detail: string;
   href: string;
 };
@@ -110,40 +111,53 @@ export const weeklyAttendance: WeekAttendancePoint[] = AdminAttendenceData;
 
 /* ---------------------------------- KPIs ---------------------------------- */
 
+// Derived figures used by the top row. Each number on the overview is stated
+// exactly once, so these replace the catalogue counts that used to repeat the
+// same value in the KPI row, the workspace tiles and the academics snapshot.
+const totalCapacity = sum(classesData.map((classItem) => classItem.capacity));
+const seatUtilization = totalCapacity
+  ? Math.round((totalStudents / totalCapacity) * 100)
+  : 0;
+const studentTeacherRatio = teachersData.length
+  ? Math.round(totalStudents / teachersData.length)
+  : 0;
+
 export const kpiTiles: KpiTile[] = [
   {
     label: "Students",
     value: totalStudents,
-    detail: `${boys} boys · ${girls} girls`,
+    detail: "Enrolled this term",
     href: "/list/students",
   },
   {
     label: "Teachers",
     value: teachersData.length,
-    detail: "Active staff",
+    detail: `1 : ${studentTeacherRatio} student ratio`,
     href: "/list/teachers",
   },
   {
-    label: "Classes",
-    value: classesData.length,
-    detail: "Across all grades",
+    label: "Seats filled",
+    value: `${seatUtilization}%`,
+    detail: `${totalCapacity} seats across ${classesData.length} classes`,
     href: "/list/classes",
   },
   {
-    label: "Subjects",
-    value: subjectsData.length,
-    detail: "In the curriculum",
-    href: "/list/subjects",
+    label: "Assignments",
+    value: assignmentsData.length,
+    detail: "Awaiting review",
+    href: "/list/assignments",
   },
 ];
 
 /* ----------------------------- attention tiles ----------------------------- */
 
+// Attendance lives only in the hero pulse and the weekly chart; the workspace
+// covers the remaining queues so no figure is repeated across sections.
 export const attentionCounts = {
-  attendanceRate,
   assignments: assignmentsData.length,
   announcements: announcements.length,
   results: resultsData.length,
+  exams: examsData.length,
 };
 
 /* -------------------------------- schedule -------------------------------- */

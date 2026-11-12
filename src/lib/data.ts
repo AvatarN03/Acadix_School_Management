@@ -298,6 +298,8 @@ export const teachersData = [
   },
 ];
 
+// Demo slice: the first page of the 106-student enrollment reported on the
+// overview. The list page renders this sample until pagination is wired up.
 export const studentsData = [
   {
     id: 1,
@@ -1241,42 +1243,43 @@ export const AdminStudentdata = [
   },
 ];
 
-// Values are school-wide daily headcounts so the derived weekly
-// attendance rate (see lib/dashboard-metrics.ts) stays realistic (~89%).
+// Values are school-wide daily headcounts. Present + absent never exceeds the
+// 106-student enrollment above, so the derived weekly rate (~89%) is internally
+// consistent. Weekend sessions run a partial timetable, hence the lower counts.
 export const AdminAttendenceData = [
   {
     name: "Mon",
-    present: 128,
-    absent: 12,
+    present: 98,
+    absent: 8,
   },
   {
     name: "Tue",
-    present: 122,
-    absent: 14,
+    present: 95,
+    absent: 11,
   },
   {
     name: "Wed",
-    present: 96,
-    absent: 18,
+    present: 92,
+    absent: 14,
   },
   {
     name: "Thu",
-    present: 118,
-    absent: 10,
+    present: 97,
+    absent: 9,
   },
   {
     name: "Fri",
-    present: 92,
+    present: 90,
     absent: 16,
   },
   {
     name: "Sat",
-    present: 74,
-    absent: 9,
+    present: 64,
+    absent: 10,
   },
   {
     name: "Sun",
-    present: 61,
+    present: 55,
     absent: 7,
   },
 ];
@@ -1286,6 +1289,7 @@ export const AdminFinanceData = [
   { name: "Feb", income: 3800, expense: 2400 },
   { name: "Mar", income: 5100, expense: 3300 },
   { name: "Apr", income: 4700, expense: 2900 },
+  { name: "May", income: 4950, expense: 2800 },
   { name: "Jun", income: 5200, expense: 3100 },
   { name: "Jul", income: 6100, expense: 3500 },
   { name: "Aug", income: 5800, expense: 2700 },
