@@ -7,9 +7,6 @@ const sora = Sora({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Acadix - Management System",
   description: "Next.js School Management System",
-  icons: {
-      icon:"/logo.png"
-  }
 };
 
 export default function RootLayout({
